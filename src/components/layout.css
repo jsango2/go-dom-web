@@ -40,7 +40,7 @@ html {
 body {
   max-width: var(--max-width);
   background-color: #c2eafb02;
-
+  overflow: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

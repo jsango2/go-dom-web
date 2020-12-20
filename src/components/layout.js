@@ -33,62 +33,8 @@ const Layout = ({ isOpen, children }) => {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
   return (
-    <>
-      {/* <div
-        style={{
-          background: `url(${Pravokutnik}) `,
-          top: "60%",
-          left: "35vw",
-          position: "absolute",
-          height: "1500px",
-          width: "400px",
-          zIndex: "0",
-          opacity: "0.3",
-          transform: `translateY(${offsetY * 0.1}px)`,
-        }}
-      >
-      </div> */}
+    <div style={{ width: "100%", height: "auto", overflow: "hidden" }}>
       <div className={` ${isOpen ? "dark" : ""} `}></div>
-      <div
-        style={{
-          background: `url(${Blueprint}) `,
-          top: "40%",
-          left: "35vw",
-          position: "absolute",
-          height: "2000px",
-          width: "2000px",
-
-          // left: "30%",
-          zIndex: "0",
-          opacity: "0.03",
-          // transform: "translate(-50%, -50%)",
-          transform: `translateY(${offsetY * 0.1}px)`,
-          // transform: `translateY(${offsetY * 0.2}px)`,
-        }}
-      >
-        {" "}
-        {/* <img src={Pravokutnik} alt="kvadrat" /> */}
-      </div>
-      <div
-        style={{
-          background: `url(${Pravokutnik}) `,
-          top: "120%",
-          left: "25vw",
-          position: "absolute",
-          height: "200px",
-          width: "1100px",
-
-          // left: "30%",
-          zIndex: "0",
-          opacity: "0.4",
-          // transform: "translate(-50%, -50%)",
-          transform: `translateY(${offsetY * 0.1}px)`,
-          // transform: `translateY(${offsetY * 0.2}px)`,
-        }}
-      >
-        {" "}
-        {/* <img src={Pravokutnik} alt="kvadrat" /> */}
-      </div>
 
       <Header />
       <Hero />
@@ -104,7 +50,7 @@ const Layout = ({ isOpen, children }) => {
       <Dogovorite />
       <Video />
       <Footer />
-    </>
+    </div>
   )
 }
 Layout.propTypes = {
