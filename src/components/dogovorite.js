@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import Logo from "../images/LOGO VELIKI.svg"
-import Boss from "../images/indianboss.jpg"
+import Boss from "../images/indianboss2.jpg"
 
 const Wrap = styled.div`
   position: relative;
