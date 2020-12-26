@@ -58,7 +58,15 @@ const Video = () => {
 
   return (
     <>
-      <Modal open={open} onClose={onCloseModal} center>
+      <Modal
+        open={open}
+        onClose={onCloseModal}
+        classNames={{
+          container: "customOverlay",
+          modal: "customModal",
+        }}
+        center
+      >
         <div className="videowrapper">
           <iframe
             className="if"
