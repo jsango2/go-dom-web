@@ -7,7 +7,7 @@ import Vert2 from "../images/vert2.png"
 import Vert4 from "../images/slika1.jpg"
 import Vert7 from "../images/slika3.jpg"
 import Vert5 from "../images/vert5.png"
-import styles from "react-responsive-carousel/lib/styles/carousel.css"
+import "react-responsive-carousel/lib/styles/carousel.css"
 
 const HeroDiv = styled.div`
   display: flex;
@@ -55,18 +55,20 @@ const WrapText = styled.div`
   position: absolute;
   width: 668px;
   height: 100%;
-  left: 23%;
-  top: 40%;
+  left: 50%;
+  top: 100%;
   z-index: 990;
+
+  transform: translate(-50%, -50%);
   @media only screen and (max-width: 76em) {
+    top: 90%;
     width: 468px;
   }
   @media only screen and (max-width: 48em) {
-    margin-top: 180px;
+    margin-top: 160px;
     top: 50%;
     left: 50%;
     width: 80%;
-    transform: translate(-50%, -50%);
   }
 `
 

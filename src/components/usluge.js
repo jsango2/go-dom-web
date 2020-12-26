@@ -7,44 +7,14 @@ import pic4 from "../images/meni5.png"
 import pic5 from "../images/meni6.png"
 import pic6 from "../images/meni7.png"
 import FadeInSection from "./fadeIn"
+import UslugeMobilno from "./uslugeMobilno"
+import { useSpring, animated as a } from "react-spring"
 
 const Wrap = styled.div`
+  ${"" /* padding-top: 15px; */}
   position: relative;
   width: 100%;
   height: auto;
-`
-const MobilneKategorije = styled.div`
-  cursor: pointer;
-  align-items: center;
-  justify-content: flex-start;
-  position: relative;
-  flex-direction: COLUMN;
-  width: 100%;
-  overflow: hidden;
-  height: 90px;
-  background-color: rgb(113, 168, 191);
-  display: none;
-  color: white;
-  font-weight: 800;
-  font-size: 24px;
-  line-height: 23.4px;
-  text-align: center;
-  padding: 35px 0;
-  transition: all 0.3s ease-in-out;
-
-  &:nth-child(odd) {
-    background-color: white;
-    color: rgb(113, 168, 191);
-  }
-  @media only screen and (max-width: 48em) {
-    display: flex;
-  }
-  @media only screen and (max-width: 320px) {
-    padding: 35px 0 40px 0;
-    font-weight: 800;
-    font-size: 18px;
-    line-height: 23.4px;
-  }
 `
 
 const Grid = styled.div`
@@ -54,6 +24,7 @@ const Grid = styled.div`
   width: 800px;
   display: flex;
   flex-wrap: wrap;
+
   @media only screen and (max-width: 48em) {
     display: none;
   }
@@ -109,89 +80,24 @@ const Text = styled.div`
   line-height: 23.4 px;
   color: white;
 `
-const Tradicija = styled.div`
-  position: relative;
-  top: -10px;
-  @media only screen and (min-width: 480px) {
-    top: 0;
+const Linija = styled.div`
+  position: absolute;
+  top: -21px;
+  left: 50%;
+  z-index: 2;
+  width: 33.5px;
+  height: 3px;
+  background-color: #71a8bf;
+  @media only screen and (max-width: 48em) {
   }
 `
 
 const Usluge = () => {
-  const [current, setCurrent] = useState(null)
-
-  const toggleKategorija = id => {
-    current === id ? setCurrent(null) : setCurrent(id)
-  }
   return (
     <Wrap>
+      <Linija />
       <Naslov>USLUGE KOJE NUDIMO</Naslov>
-      <MobilneKategorije
-        onClick={() => toggleKategorija(6)}
-        className={current === 6 ? "otkrijiDodatak" : ""}
-      >
-        KLJUČ U RUKE
-        <span className={`dodatak`}>
-          Vođenje gradnje od iskopa temelja do bojanja fasade, zajedno s nama
-          gledajte kako se vaša investicija iz nacrta razvija u novi dom.
-        </span>
-      </MobilneKategorije>
-      <MobilneKategorije
-        onClick={() => toggleKategorija(5)}
-        className={current === 5 ? "otkrijiDodatak" : ""}
-      >
-        REKONSTRUKCIJE
-        <span className={`dodatak`}>
-          Rješite statičke i funkcionalne probleme svoje stare nekretnine ili
-          joj potpunom rekonstrukcijom promijenite kompletan izgled i udahnite
-          novi život.
-        </span>
-      </MobilneKategorije>
-      <MobilneKategorije
-        onClick={() => toggleKategorija(4)}
-        className={current === 4 ? "otkrijiDodatak" : ""}
-      >
-        <Tradicija>TRADICIONALNA GRADNJA I KAMEN</Tradicija>
-        <span className={`dodatak tradicija`}>
-          Njegujući estetiku i tradiciju gradnje kamenih kuća koristeći moderne
-          tehnologije dodajemo im bolju izolaciju i funkcionalnost.
-        </span>
-      </MobilneKategorije>
-      <MobilneKategorije
-        onClick={() => toggleKategorija(3)}
-        className={current === 3 ? "otkrijiDodatak" : ""}
-      >
-        FASADE I IZOLACIJE
-        <span className={`dodatak`}>
-          Izvodimo razne fasadne sisteme ovlaštenih proizvođača. Uložite u
-          izolaciju vašeg doma i napravite ga ugodnijim za korištenje uz uštedu
-          energije.
-        </span>
-      </MobilneKategorije>
-      <MobilneKategorije
-        onClick={() => toggleKategorija(2)}
-        className={current === 2 ? "otkrijiDodatak" : ""}
-      >
-        UREĐENJE INTERIJERA
-        <span className={`dodatak`}>
-          Ručna i strojna žbuka, gletanje, bojanje i dekorativni kamen, završni
-          detalji su oni koje ćete svakodnevno gledati pa njima posvjećujemo
-          posebnu pažnju.
-        </span>
-      </MobilneKategorije>
-      <div>
-        <MobilneKategorije
-          onClick={() => toggleKategorija(1)}
-          className={current === 1 ? "otkrijiDodatak" : ""}
-        >
-          BAZENSKI SUSTAVI
-          <span className={`dodatak`}>
-            Povećajte vrijednost Vaše nekretnine i uživajte u njenom korištenju
-            dodajući jedan od vrsta bazena iz naše ponude (klasični, zatvoreni,
-            „infinity“, preljevni…).
-          </span>
-        </MobilneKategorije>
-      </div>
+      <UslugeMobilno />
       <FadeInSection>
         <Grid>
           <GridDiv>

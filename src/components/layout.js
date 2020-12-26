@@ -22,6 +22,7 @@ import Footer from "./footer"
 import Blueprint from "../images/blueprint.svg"
 import Pravokutnik from "../images/pravokutnik.svg"
 import KontaktSekcija from "./kontaktSekcija"
+import ImageTest from "./gatsbyImageTest"
 
 const Layout = ({ isOpen, children }) => {
   const [offsetY, setOffsetY] = useState(0)

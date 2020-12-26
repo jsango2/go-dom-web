@@ -7,11 +7,15 @@ import PostJenDvaTri from "../components/postjendvatri"
 import PhotoGrid from "../components/postPhotosGrid"
 import Footer from "../components/footer"
 import { Link } from "gatsby"
+import { IoIosArrowDropright } from "react-icons/io"
 
 const Wrap = styled.div`
   position: relative;
   width: 100%;
   height: auto;
+`
+const Icon = styled(IoIosArrowDropright)`
+  transition: all 0.3s linear;
 `
 const CmsSinglePost = styled.div`
   display: flex;
@@ -61,30 +65,39 @@ const CmsSinglePost = styled.div`
   &:hover .fotka {
     transform: scale(1.03);
   }
-  @media only screen and (max-width: 76em) {
-    width: 32%;
+  &:hover .ikona {
+    transform: rotate(90deg);
   }
-  @media only screen and (max-width: 48em) {
+  @media only screen and (max-width: 580px) {
     flex-direction: row;
-    width: 99vw;
+    width: 100vw;
     min-width: 280px;
     height: 235px;
+  }
+  @media only screen and (max-width: 410px) {
+    flex-direction: column;
+    width: 99vw;
+    min-width: 280px;
+    height: 470px;
   }
 `
 const GornjiDio = styled.div`
   position: relative;
   z-index: 20;
-  padding: 31px 27px;
+  padding: 27px 27px 0 27px;
+
   width: 100%;
   height: 235px;
-  @media only screen and (max-width: 48em) {
+  @media only screen and (max-width: 440px) {
     flex-direction: row;
     width: 100%;
-    min-width: 230px;
+    min-width: 200px;
     height: 235px;
+    padding: 20px 17px 15px 17px;
   }
 `
 const DonjiDio = styled.div`
+  cursor: pointer;
   position: relative;
   width: 100%;
   height: 235px;
@@ -124,6 +137,7 @@ const Objekt = ({ data }) => (
           lineHeight: "34px",
           textAlign: "center",
           marginBottom: "30px",
+          marginTop: "90px",
         }}
       >
         Pogledajte i ostale projekte
@@ -139,7 +153,7 @@ const Objekt = ({ data }) => (
           minHeight: "480px",
         }}
       >
-        {data.wpgraphql.posts.edges.map(post => (
+        {data.wpgraphql.posts.edges.slice(0, 6).map(post => (
           <CmsSinglePost key={post.node.id}>
             <GornjiDio className="gornji">
               <Link to={`/objekt/${post.node.slug}`}>
@@ -158,7 +172,7 @@ const Objekt = ({ data }) => (
                 </div>
                 <div
                   style={{
-                    width: "213px",
+                    maxwidth: "213px",
                     fontWeight: "700",
                     fontSize: "16px",
                     lineHeight: "19.5px",
@@ -171,7 +185,7 @@ const Objekt = ({ data }) => (
                 </div>
                 <div
                   style={{
-                    width: "196px",
+                    width: "100%",
                     fontWeight: "400",
                     fontStyle: "normal",
                     fontSize: "14px",
@@ -185,17 +199,34 @@ const Objekt = ({ data }) => (
               </Link>
             </GornjiDio>
             <DonjiDio>
-              <img
-                src={post.node.dodatniOpis.frontForografija.sourceUrl}
-                alt="logo"
-                className="fotka"
-                style={{
-                  position: "relative",
-                  transition: "all .5s ease-in-out",
-                  height: "100%",
-                  objectFit: "contain",
-                }}
-              />
+              <Link to={`/objekt/${post.node.slug}`}>
+                <div
+                  // src={post.node.dodatniOpis.frontForografija.sourceUrl}
+                  alt="logo"
+                  className="fotka"
+                  style={{
+                    position: "relative",
+                    transition: "all .5s ease-in-out",
+                    height: "100%",
+                    width: "100%",
+                    backgroundSize: "cover",
+                    backgroundImage: `url(${post.node.dodatniOpis.frontForografija.sourceUrl})`,
+                    backgroundPosition: "center",
+                    // transform: "scale(1.1)",
+                  }}
+                />
+                <Icon
+                  className="ikona"
+                  style={{
+                    position: "absolute",
+                    zIndex: "21",
+                    color: "white",
+                    fontSize: "24px",
+                    top: "10px",
+                    right: "10px",
+                  }}
+                />
+              </Link>
             </DonjiDio>
           </CmsSinglePost>
         ))}

@@ -2,13 +2,16 @@ import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 import Quote from "../images/quote.svg"
 import Guy from "../images/guy.jpg"
+import Radnici from "../images/radniciSQ.jpg"
 
 const Wrap = styled.div`
+  display: flex;
   position: relative;
   width: 100%;
-  height: 665px;
-  @media only screen and (max-width: 76em) {
-    display: flex;
+  height: auto;
+  margin-bottom: 100px;
+  @media only screen and (max-width: 70em) {
+    ${"" /* display: flex; */}
   }
   @media only screen and (max-width: 48em) {
     display: flex;
@@ -24,7 +27,7 @@ const LukaHero = styled.div`
   width: 533px;
   height: 528px;
   background-color: #71a8bf;
-  @media only screen and (max-width: 76em) {
+  @media only screen and (max-width: 1000px) {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -39,45 +42,51 @@ const LukaHero = styled.div`
   }
 `
 const OnamaHero = styled.div`
-  position: absolute;
-  left: auto;
-  top: 113px;
-  left: 640px;
+  position: relative;
+  ${"" /* left: auto; */}
+  top: 130px;
+  left: 100px;
   bottom: 0%;
-  z-index: 1;
+  z-index: 2;
   width: 473px;
   height: 458px;
-  background-color: #eaeaea;
-  @media only screen and (max-width: 76em) {
+  overflow: hidden;
+  @media only screen and (max-width: 1000px) {
     transform: none !important;
-    position: static;
+    ${"" /* position: relative; */}
+    top: 0;
+    left: 0;
     width: 45%;
     height: 528px;
   }
-  @media only screen and (max-width: 48em) {
+  @media only screen and (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
     width: 100%;
     height: auto;
-    padding-bottom: 56px;
+  }
+  @media only screen and (max-width: 48em) {
   }
 `
 const Pwrap = styled.div`
   font-weight: 300;
   font-size: 22px;
   line-height: 28.5px;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   position: relative;
   color: white;
-  margin-top: 24px;
+  margin-top: 152px;
   margin-left: 60px;
   width: 239px;
   height: 226px;
-  @media only screen and (max-width: 76em) {
+  @media only screen and (max-width: 1000px) {
     margin-left: 0px;
     width: 249px;
   }
   @media only screen and (max-width: 48em) {
-    margin: 0 auto;
-    width: 66%;
+    margin: 152px auto 0 auto;
+    width: 70%;
     height: auto;
   }
 `
@@ -92,7 +101,7 @@ const LukaPikunic = styled.div`
   margin-left: 60px;
   width: 192px;
   height: 34px;
-  @media only screen and (max-width: 76em) {
+  @media only screen and (max-width: 1000px) {
     margin-left: -50px;
   }
   @media only screen and (max-width: 48em) {
@@ -100,54 +109,52 @@ const LukaPikunic = styled.div`
   }
 `
 const OnamaText = styled.div`
+  position: relative;
+  z-index: 5;
   color: #393939;
   width: 258px;
   height: 179px;
   font-weight: 500;
   line-height: 19px;
   font-size: 14px;
-  margin: 0 0 35px 130px;
-  @media only screen and (min-width: 48em) (max-width: 76em) {
-    margin-left: 22%;
+  margin: 0 auto 45px 130px;
+  @media only screen and (max-width: 1000px) {
+    marginleft: 108px;
+  }
+  @media only screen and (max-width: 768px) {
+    margin: 0 auto 39px auto;
+    width: 70%;
+    height: auto;
   }
   @media only screen and (max-width: 48em) {
-    margin: 0 auto;
-    width: 66%;
-    height: auto;
   }
 `
 const OnamaNaslov = styled.div`
+  position: relative;
+  z-index: 111;
   color: #71a8bf;
   font-weight: bold;
   font-size: 35px;
-  margin: 70px auto 30px 125px;
-  @media only screen and (max-width: 76em) {
-    margin-left: 22%;
+  margin: 70px auto 30px 130px;
+  @media only screen and (max-width: 1000px) {
+    marginleft: 108px;
+  }
+  @media only screen and (max-width: 768px) {
+    margin: 70px auto 32px auto;
   }
   @media only screen and (max-width: 320px) {
-    margin-left: 17%;
-  }
-`
-const Linija = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  z-index: 2;
-  width: 33.5px;
-  height: 3px;
-  background-color: #71a8bf;
-  @media only screen and (max-width: 48em) {
-    display: none;
   }
 `
 
 const Img = styled.div`
-  display: inline-block;
-  margin-bottom: 0;
-  margin-left: 159px;
-  margin-top: 32px;
-  @media only screen and (max-width: 76em) {
-    margin-left: -150px;
+  position: absolute;
+  top: 32px;
+  left: 159px;
+  @media only screen and (max-width: 1000px) {
+    left: 25%;
+  }
+  @media only screen and (max-width: 48em) {
+    left: 15%;
   }
 `
 
@@ -159,29 +166,36 @@ const LukaFoto = styled.div`
   margin-top: 0;
   width: 198px;
   height: 253px;
-  @media only screen and (max-width: 76em) {
+  @media only screen and (max-width: 1000px) {
     display: none;
   }
 `
-const Button = styled.div`
+const Button = styled.a`
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   background-color: transparent;
   z-index: 2;
-  margin-left: 130px;
   border: 1px solid #393939;
   width: 197px;
   height: 37px;
   color: #393939;
   font-weight: 300;
   font-size: 16px;
-  @media only screen and (max-width: 76em) {
-    margin: 40px auto 0 auto;
+  text-decoration: none;
+  margin: 0 auto 0 130px;
+  @media only screen and (max-width: 1000px) {
+    marginleft: 108px;
   }
-  @media only screen and (max-width: 320px) {
-    margin: 40px auto 0 17%;
+  @media only screen and (max-width: 768px) {
+    margin: 0 auto 54px auto;
+  }
+  @media only screen and (max-width: 420px) {
+    ${"" /* bottom: 49px;
+    left: 50%;
+    transform: translate(-50%, -50%); */}
   }
 `
 
@@ -222,8 +236,28 @@ const Onama = () => {
       </LukaHero>
 
       <OnamaHero style={{ transform: `translateY(-${offsetY * 0.1}px)` }}>
+        <div
+          style={{
+            width: "100%",
+            height: "100%",
+            backgroundColor: "#eaeaea",
+            opacity: "0.9",
+            position: "absolute",
+            zIndex: "2",
+          }}
+        ></div>
+        <div
+          style={{
+            position: "absolute",
+            width: "100%",
+            height: "100%",
+            backgroundImage: `url(${Radnici})`,
+            backgroundPosition: "center",
+            backgroundSize: "cover ",
+            zIndex: "1",
+          }}
+        ></div>
         <OnamaNaslov> O NAMA</OnamaNaslov>
-
         <OnamaText>
           {" "}
           Građevinski obrt Dom ovlaštena je izvođačka firma s 22 godine dugom
@@ -233,9 +267,10 @@ const Onama = () => {
           način gradnje u Dalmaciji.
         </OnamaText>
 
-        <Button>POŠALJITE NAM UPIT</Button>
+        <Button href="mailto: info@go-dom.hr?subject=Upit">
+          POŠALJITE NAM UPIT
+        </Button>
       </OnamaHero>
-      <Linija />
     </Wrap>
   )
 }

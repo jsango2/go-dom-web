@@ -23,7 +23,7 @@ const Blok = styled.div`
   margin: 1px;
   @media only screen and (max-width: 57em) {
     width: 100%;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
   }
 `
 const Broj = styled.div`

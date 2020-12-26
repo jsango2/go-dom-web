@@ -9,19 +9,19 @@ const Wrap = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 183px;
+  padding-top: 173px;
   width: 100%;
   height: 460px;
   background-color: #71a8bf;
   color: white;
   bottom: 0;
-  z-index: 20;
+  z-index: 30;
 
   clip-path: polygon(0 0, 100% 25%, 100% 100%, 0 100%);
-  @media only screen and (max-width: 380px) {
-    height: 360px;
-    clip-path: polygon(0 0, 100% 10%, 100% 100%, 0 100%);
-    padding-top: 100px;
+  @media only screen and (max-width: 520px) {
+    height: 370px;
+    clip-path: polygon(0 0, 100% 14%, 100% 100%, 0 100%);
+    padding-top: 80px;
   }
 `
 const WrapOut = styled.div`
@@ -31,7 +31,7 @@ const WrapOut = styled.div`
 `
 const FooterText = styled.div`
   justify-content: end;
-  margin-top: 55px;
+  margin-top: 45px;
   font-weight: 300;
   font-size: 14px;
   letter-spacing: 0.06em;
@@ -39,13 +39,13 @@ const FooterText = styled.div`
   @media only screen and (max-width: 57em) {
     width: 80%;
   }
-  @media only screen and (max-width: 380px) {
-    margin-top: 30px;
+  @media only screen and (max-width: 440px) {
+    margin-top: 45px;
   }
 `
 const LogoMob = styled.div`
   width: 227px;
-  @media only screen and (max-width: 380px) {
+  @media only screen and (max-width: 440px) {
     width: 145px;
   }
 `
@@ -55,7 +55,7 @@ const Podnaslov = styled.div`
   font-size: 20px;
   letter-spacing: 0.225em;
   text-align: center;
-  @media only screen and (max-width: 380px) {
+  @media only screen and (max-width: 440px) {
     font-size: 13px;
     margin-top: 13px;
   }

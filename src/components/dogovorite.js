@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import Logo from "../images/LOGO VELIKI.svg"
-import Boss from "../images/indianboss2.jpg"
+import Boss from "../images/blue2.jpg"
 
 const Wrap = styled.div`
   position: relative;
@@ -10,16 +10,14 @@ const Wrap = styled.div`
   height: 400px;
 `
 const PhotoWrap = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 42px;
   position: absolute;
   z-index: 20;
   width: 668px;
-  height: 490px;
-  top: -310px;
+  height: 520px;
+  top: -120px;
   overflow: hidden;
+
+  ${"" /* z-index: 1; */}
   @media only screen and (max-width: 72em) {
     display: none;
   }
@@ -71,7 +69,9 @@ const Text = styled.div`
 
 const Dogovorite = () => {
   const [offsetY, setOffsetY] = useState(0)
-  const handleScroll = () => setOffsetY(window.pageYOffset)
+  const handleScroll = () => {
+    setOffsetY(window.pageYOffset)
+  }
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll)
@@ -80,14 +80,22 @@ const Dogovorite = () => {
   }, [])
   return (
     <Wrap>
-      <PhotoWrap style={{ transform: `translateY(${offsetY * 0.04}px)` }}>
-        <img
-          src={Boss}
-          style={{ objectFit: "contain" }}
-          height="100%"
-          alt="logo"
-        />
+      <PhotoWrap>
+        <div
+          style={{
+            position: "absolute",
+            width: "120%",
+            height: "120%",
+            top: "-400px",
+            backgroundImage: `url(${Boss})`,
+            backgroundPosition: "center",
+            backgroundSize: "cover ",
+            zIndex: "1",
+            transform: `translateY(${offsetY * 0.08}px)`,
+          }}
+        ></div>
       </PhotoWrap>
+
       <OrangeWrap>
         <TextWrap>
           <img src={Logo} alt="logo" />

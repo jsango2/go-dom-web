@@ -2,14 +2,16 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React, { useState } from "react"
 import { AnchorLink } from "gatsby-plugin-anchor-links"
-import logo from "../images/LOGO DOM.png"
+import logo from "../images/LogoTopsvg.svg"
 import Headroom from "react-headroom"
 import styled from "styled-components"
+import { useSpring, animated } from "react-spring"
 
 const HeaderWrap = styled.div`
   margin: 0 auto;
-  max-width: 100%;
-  padding: 1.85rem 0;
+  max-width: 1280px;
+  ${"" /* padding: 1.85rem 0; */}
+  height: 85px;
   display: flex;
   flex-flow: row wrap;
   align-items: center;
@@ -29,24 +31,22 @@ const Logo = styled.div`
   ${"" /* display: inline-block; */}
   margin-bottom: 0;
   margin-right: 15px;
-  margin-left: 170px;
-  width: 110px;
-  @media only screen and (max-width: 60em) {
+  margin-left: 175px;
+  width: 97px;
+  @media only screen and (max-width: 960px) {
+    position: relative;
+    top: 15px;
+    margin-left: 130px;
+  }
+
+  @media only screen and (max-width: 530px) {
     position: relative;
     top: 15px;
     margin-left: 70px;
-  }
-  @media only screen and (max-width: 40em) {
-    position: relative;
-    top: 15px;
-    margin-left: 50px;
-    width: 80px;
-  }
-  @media only screen and (max-width: 30em) {
-    position: relative;
-    top: 15px;
-    margin-left: 20px;
     width: 60px;
+  }
+  @media only screen and (max-width: 330px) {
+    margin-left: 40px;
   }
 `
 
@@ -74,7 +74,7 @@ const Header = () => {
           <div className="logoHeader">
             <Link to="/">
               <Logo>
-                <img src={logo} alt="logo" />
+                <img src={logo} alt="logo" width="97px" />
               </Logo>
             </Link>
 
@@ -88,20 +88,21 @@ const Header = () => {
               }}
             ></div>
           </div>
-
           <nav className={`primary-nav ${display}`}>
             <Telefon
-              href="tel:+385 (0) 91 6318 536"
               className="LinkHeader"
               style={{ fontSize: "16px", color: "#B2B2B2", cursor: "pointer" }}
             >
-              +385 (0) 91 6318 536
+              <a style={{ color: " #b2b2b2" }} href="tel: +385 (0) 91 6318 536">
+                {" "}
+                +385 (0) 91 6318 536
+              </a>
             </Telefon>
 
             <AnchorLink
               offset={100}
               to="/#projekti"
-              className="LinkHeaderProjekti"
+              className="LinkHeader LinkHeaderProjekti"
               activeClassName="active"
             >
               PROJEKTI

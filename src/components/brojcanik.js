@@ -12,6 +12,7 @@ const Wrap = styled.div`
   margin: 0 auto;
   @media only screen and (max-width: 48em) {
     flex-direction: column;
+    margin: 50px auto;
   }
 `
 const WrapPar = styled.div`

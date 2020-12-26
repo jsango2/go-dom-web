@@ -3,7 +3,8 @@ import Banka from "../images/banka.svg"
 import Pismo from "../images/psimo.svg"
 import Telefon from "../images/telefon ikona.svg"
 import Lokacija from "../images/location.svg"
-import Indians from "../images/indian.jpg"
+import Indians from "../images/radniciSQ.jpg"
+import Papiri from "../images/blue2.jpg"
 import styled from "styled-components"
 
 const Wrap = styled.div`
@@ -25,14 +26,19 @@ const OrangePart = styled.div`
   width: 48%;
   height: 100%;
   padding-top: 59px;
-  padding-left: 16%;
+  padding-left: 200px;
   background-color: #d85f39;
+  @media only screen and (max-width: 1060px) {
+    padding-left: 150px;
+  }
+  @media only screen and (max-width: 955px) {
+    padding-left: 100px;
+  }
   @media only screen and (max-width: 48em) {
     width: 100%;
-    height: 417px;
-    justify-content: flex-start;
+    height: auto;
     align-items: center;
-    padding-left: 0;
+    padding: 80px 0 60px 0;
   }
 `
 const PhotoPart = styled.div`
@@ -56,9 +62,12 @@ const PhotoAbsoluteParallax = styled.div`
   position: absolute;
   z-index: 15;
   width: 100%;
-  height: 105%;
+  height: 110%;
   background-color: black;
   top: -170px;
+  background-image: url(${Papiri});
+  background-position: center;
+  background-size: cover;
   @media only screen and (max-width: 76em) {
   }
   @media only screen and (max-width: 48em) {
@@ -90,10 +99,10 @@ const Naslov = styled.div`
   }
 `
 const KontaktText = styled.div`
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
   color: white;
-  width: 230px;
+  width: 255px;
   @media only screen and (max-width: 48em) {
     margin-top: 5px;
     text-align: center;
@@ -106,7 +115,7 @@ const MiniWrap = styled.div`
   font-size: 38px;
   font-weight: 700;
   color: white;
-  margin: 0 0 31px 0;
+  margin: 0 0 28px 0;
 
   @media only screen and (max-width: 48em) {
     margin: 0 0 10px 0;
@@ -131,31 +140,35 @@ const MiniWrapBanka = styled.div`
     }
   }
 `
-const Button = styled.div`
+const Button = styled.a`
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  text-align: center;
+  position: relative;
   background-color: transparent;
-  z-index: 10;
-  margin-left: 130px;
+  z-index: 2;
   border: 1px solid white;
-  width: 50%;
-  height: 103px;
+  width: 323px;
+  height: auto;
   color: white;
+  text-align: center;
+  padding: 10px 30px;
   font-weight: 700;
   font-size: 16px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  @media only screen and (max-width: 76em) {
-    margin: 40px auto 0 auto;
+  text-decoration: none;
+  margin: 0 auto 0 130px;
+  padding: 10px 30px;
+  @media only screen and (max-width: 1000px) {
+    marginleft: 108px;
   }
-  @media only screen and (max-width: 48em) {
+  @media only screen and (max-width: 768px) {
     margin: 0 auto;
+  }
+  @media only screen and (max-width: 420px) {
+    ${"" /* bottom: 49px;
+    left: 50%;
+    transform: translate(-50%, -50%); */}
   }
 `
 const KontaktSekcija = () => {
@@ -180,7 +193,10 @@ const KontaktSekcija = () => {
             }}
           />
           <KontaktText style={{ marginTop: "0" }}>
-            +385 (0) 91 6318 536
+            <a style={{ color: "white" }} href="tel: +385 (0) 91 6318 536">
+              {" "}
+              +385 (0) 91 6318 536
+            </a>
           </KontaktText>
         </MiniWrap>
         <MiniWrap>
@@ -193,7 +209,14 @@ const KontaktSekcija = () => {
               top: "3px",
             }}
           />
-          <KontaktText style={{ marginTop: "0" }}>info@go-dom.hr</KontaktText>
+          <KontaktText style={{ marginTop: "0" }}>
+            <a
+              style={{ color: "white" }}
+              href="mailto: info@go-dom.hr?subject=Upit"
+            >
+              info@go-dom.hr
+            </a>
+          </KontaktText>
         </MiniWrap>
         <MiniWrap>
           <img
@@ -221,7 +244,8 @@ const KontaktSekcija = () => {
           />
           <KontaktText style={{ marginTop: "0" }}>
             OIB: 10517562883 <br />
-            IBAN: HR7424070001100605535 (OTP BANKA)
+            IBAN: HR7424070001100605535
+            <br /> (OTP BANKA)
           </KontaktText>
         </MiniWrapBanka>
       </OrangePart>
@@ -230,14 +254,22 @@ const KontaktSekcija = () => {
           style={{ transform: `translateY(${offsetY * 0.04}px)` }}
         ></PhotoAbsoluteParallax>
       </PhotoPart>
+
       <PhotoWrapMobile>
-        <img
-          src={Indians}
-          style={{ objectFit: "contain", filter: "grayscale(100%)" }}
-          height="120%"
-          alt="logo"
-        />
-        <Button>POŠALJITE NAM UPIT I DOGOVORITE SASTANAK</Button>
+        <div
+          style={{
+            position: "absolute",
+            width: "100%",
+            height: "100%",
+            backgroundImage: `url(${Indians})`,
+            backgroundPosition: "center",
+            backgroundSize: "cover ",
+            zIndex: "1",
+          }}
+        ></div>
+        <Button href="mailto: info@go-dom.hr?subject=Upit">
+          POŠALJITE NAM UPIT I DOGOVORITE SASTANAK !
+        </Button>
       </PhotoWrapMobile>
     </Wrap>
   )

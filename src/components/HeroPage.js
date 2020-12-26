@@ -1,4 +1,32 @@
 import React from "react"
+import styled from "styled-components"
+
+const Naslov = styled.div`
+  font-weight: 700;
+  color: white;
+  font-size: 38px;
+  line-height: 45px;
+  text-align: center;
+  width: 80%;
+  z-index: 30;
+  @media only screen and (max-width: 455px) {
+    font-size: 30px;
+  }
+`
+const TextHero = styled.div`
+  font-weight: 300;
+  color: white;
+  font-size: 20px;
+  line-height: 25.9px;
+  text-align: center;
+  width: 85%;
+  max-width: 590px;
+  margin-top: 20px;
+  z-index: 30;
+  @media only screen and (max-width: 455px) {
+    font-size: 16px;
+  }
+`
 
 export default function HeroPage(props) {
   return (
@@ -32,41 +60,13 @@ export default function HeroPage(props) {
           fontSize: "16px",
           fontWeight: "300",
           zIndex: "30",
+          marginTop: "30px",
         }}
       >
         {props.lokacija}
       </div>
-      <div
-        style={{
-          color: "white",
-          //   position: "absolute",
-          fontSize: "38px",
-          fontWeight: "700",
-          marginTop: "10px",
-          width: "80%",
-          textAlign: "center",
-          lineHeight: "45px",
-          zIndex: "30",
-        }}
-      >
-        {props.imeProjekta}
-      </div>
-      <div
-        style={{
-          color: "white",
-          width: "85%",
-          maxWidth: "590px",
-          textAlign: "center",
-          //   position: "absolute",
-          fontSize: "20px",
-          fontWeight: "300",
-          lineHeight: "25.9px",
-          marginTop: "20px",
-          zIndex: "30",
-        }}
-      >
-        {props.kratkiTekst}
-      </div>
+      <Naslov>{props.imeProjekta}</Naslov>
+      <TextHero>{props.kratkiTekst}</TextHero>
       <div
         style={{
           position: "absolute",

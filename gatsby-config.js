@@ -1,11 +1,11 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Blog`,
+    title: `GO - Dom`,
     author: {
-      name: `Kyle Mathews`,
-      summary: `who lives and works in San Francisco building useful things.`,
+      name: `Sutra.hr`,
+      summary: `Let's go!.`,
     },
-    description: `A starter blog demonstrating what Gatsby can do.`,
+    description: `Građevinski obrt DOM`,
     siteUrl: `https://cms.gradevinskiobrt-dom.hr`,
   },
 
@@ -28,6 +28,17 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `Montserrat Alternates\:500`,
+          `Montserrat\:300,400,500,700,800`,
+          // you can also specify font weights and styles
+        ],
+        display: "swap",
+      },
+    },
+    {
       resolve: "gatsby-plugin-anchor-links",
       options: {
         offset: -150,
@@ -46,6 +57,13 @@ module.exports = {
       options: {
         path: `${__dirname}/content/assets`,
         name: `assets`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/images`,
+        name: `images`,
       },
     },
     {

@@ -40,7 +40,6 @@ html {
 body {
   max-width: var(--max-width);
   background-color: #c2eafb02;
-  overflow: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -213,35 +212,99 @@ fieldset {
 .carousel .control-dots {
   margin: 0;
 }
+.arrowDownIkona {
+  transform: rotate(-180deg);
+  opacity: 0.3;
+}
+.arrowIkona {
+  transition: all 0.4s cubic-bezier(0.42, 0.71, 0.49, 0.98);
+}
 
 .dodatak {
   font-weight: 400;
   font-size: 16px;
   line-height: 19.5px;
-  padding: 10px 10%;
-  background-color: transparent;
+  padding: 35px 10% 46px 10%;
+  background-color: #8a9fa8;
+  height: 200px;
 
-  margin-top: 20px;
+  /* margin-top: 20px; */
 }
 
 .otkrijiDodatak {
-  height: 200px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 140px !important;
 }
-/* .tradicija {
-  padding-top: 20px !important;
-} */
+
+.kategorijaButton {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  width: 100%;
+  height: 88px;
+  color: white;
+  border-bottom: 1px solid white;
+  transition: all 0.4s ease-in-out;
+  background-color: #71a8bf;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 130.02%;
+  text-align: left;
+  padding-left: 133px;
+  padding-right: 50px;
+}
+.ikonaKategorije {
+  position: absolute;
+  left: 46px;
+  font-size: 46px;
+}
+.kategorijaToggleText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #8a9fa8;
+  color: white;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  height: 0;
+  transition: all 0.4s ease-in-out !important;
+  overflow: hidden;
+}
+
 @media only screen and (max-width: 48em) {
   .mobilne-kategorija {
     display: flex;
     transition: all 0.3s ease-in-out;
   }
 }
-@media only screen and (max-width: 350px) {
+@media only screen and (max-width: 430px) {
   .LinkHeaderProjekti {
     display: none;
   }
   .otkrijiDodatak {
-    height: 260px !important;
+    height: 150px !important;
+  }
+}
+@media only screen and (max-width: 450px) {
+  .kategorijaButton {
+    font-size: 18px;
+    padding-left: 75px;
+  }
+  .ikonaKategorije {
+    left: 26px;
+    font-size: 33px;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .otkrijiDodatak {
+    height: 180px !important;
   }
 }
 /* ____________________________________________sidebar */
@@ -253,6 +316,9 @@ fieldset {
   opacity: 0.6;
   z-index: 900;
 }
+.react-reveal {
+  z-index: 9999;
+}
 
 .sidebarLink {
   transform: translateX(-200px);
@@ -261,7 +327,7 @@ fieldset {
 
 .show-Link {
   animation: slideRight 0.6s ease-in-out 0.3s forwards;
-  font-weight: 500 !important;
+  font-weight: 700 !important;
   color: #b2b2b2 !important;
 }
 .sidebar {
@@ -315,6 +381,29 @@ fieldset {
     transform: translateX(0);
     opacity: 1;
   }
+}
+/* iframe {
+  width: 100% !important;
+  height: auto !important;
+} */
+.video-container {
+  overflow: hidden;
+  position: relative;
+  width: 80vw;
+}
+
+.video-container::after {
+  padding-top: 56.25%;
+  display: block;
+  content: "";
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 /* ------------------------------------------------ */
 
@@ -694,7 +783,7 @@ noscript {
   padding-top: 0;
   margin-bottom: 1.45rem;
 }
-iframe {
+/* iframe {
   margin-left: 0;
   margin-right: 0;
   margin-top: 0;
@@ -703,7 +792,7 @@ iframe {
   padding-right: 0;
   padding-top: 0;
   margin-bottom: 1.45rem;
-}
+} */
 hr {
   margin-left: 0;
   margin-right: 0;
@@ -864,15 +953,16 @@ pre tt:after {
 }
 .primary-nav {
   position: relative;
-  top: 25px;
+  top: 3px;
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-end;
   align-items: center;
-  margin-right: 164px;
+  margin-right: 175px;
 }
-.LinkHeader {
+.LinkHeader a {
   transition: all 0.2s ease-in-out !important;
+  text-decoration: none;
 }
 .LinkHeader:hover {
   color: #71a8bf;
@@ -893,7 +983,7 @@ pre tt:after {
 @media screen and (max-width: 960px) {
   .primary-nav {
     top: 0;
-    margin-right: 34px;
+    margin-right: 15%;
   }
   .primary-nav > a {
     margin-left: 32px !important;
@@ -904,7 +994,7 @@ pre tt:after {
 @media screen and (max-width: 660px) {
   .primary-nav {
     top: 0;
-    margin-right: 24px;
+    margin-right: 15%;
   }
   .primary-nav > a {
     margin-left: 22px !important;

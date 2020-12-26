@@ -2,10 +2,10 @@ import React from "react"
 import styled from "styled-components"
 
 import Quote from "../images/quote.svg"
-import Background from "../images/image radnici.png"
+import Background from "../images/radniciBG.jpg"
 import { StaticQuery, graphql } from "gatsby"
 import { Carousel } from "react-responsive-carousel"
-import styles from "react-responsive-carousel/lib/styles/carousel.css"
+import "react-responsive-carousel/lib/styles/carousel.css"
 
 const Wrap = styled.div`
   display: flex;
@@ -14,6 +14,7 @@ const Wrap = styled.div`
   position: relative;
   width: 100%;
   height: 480px;
+  z-index: 20;
   @media only screen and (max-width: 48em) {
     height: 495px;
   }
@@ -32,12 +33,6 @@ const Overlay = styled.div`
   //
 `
 
-const BackgroundL = styled.div`
-  position: absolute;
-  z-index: 1;
-  width: 100%;
-  height: 100%;
-`
 const AutorTestimoniala = styled.div`
   textalign: center;
   font-size: 22px;
@@ -54,12 +49,12 @@ const AutorTestimoniala = styled.div`
   }
 `
 const ZanimanjeAutora = styled.div`
-       text-align: center;
-                      font-size: 22px;
-                      font-style: italic;
-                      font-weight: 300
-                      line-height: 28.49px;
-                      color: white;
+  text-align: center;
+  font-size: 22px;
+  font-style: italic;
+  font-weight: 300;
+  line-height: 28.49px;
+  color: white;
 
   @media only screen and (max-width: 360px) {
     font-size: 16px;
@@ -77,8 +72,10 @@ const Paragraf = styled.div`
   margin: 170px auto 0 auto;
   color: white;
   @media only screen and (max-width: 48em) {
+    font-size: 19px;
+
     width: 90%;
-    margin-top: 130px;
+    margin-top: 150px;
   }
   @media only screen and (max-width: 360px) {
     font-size: 16px;
@@ -92,11 +89,14 @@ const Testimonial = () => {
       query={graphql`
         {
           wpgraphql {
-            testimonial_plural {
+            izjave_vise {
               edges {
                 node {
+                  izjave_korisnika {
+                    textIzjave
+                    zanimanjeAutoraIzjave
+                  }
                   title
-                  content
                 }
               }
             }
@@ -108,10 +108,17 @@ const Testimonial = () => {
           <Wrap>
             <Overlay />
 
-            <BackgroundL>
-              {" "}
-              <img src={Background} alt="background" />
-            </BackgroundL>
+            <div
+              style={{
+                position: "absolute",
+                width: "100%",
+                height: "100%",
+                backgroundImage: `url(${Background})`,
+                backgroundPosition: "center",
+                backgroundSize: "cover ",
+                zIndex: "1",
+              }}
+            ></div>
             <img
               src={Quote}
               alt="logo"
@@ -133,19 +140,22 @@ const Testimonial = () => {
               showStatus={false}
               autoPlay={true}
               interval={3100}
+              showIndicators={false}
             >
-              {data.wpgraphql.testimonial_plural.edges.map(testimonial => (
+              {data.wpgraphql.izjave_vise.edges.map(testimonial => (
                 <div className="visibleContent" key={testimonial.node.title}>
                   <Paragraf
                     dangerouslySetInnerHTML={{
-                      __html: testimonial.node.content,
+                      __html: testimonial.node.izjave_korisnika.textIzjave,
                     }}
                   />
 
                   <AutorTestimoniala>
                     {testimonial.node.title}
                   </AutorTestimoniala>
-                  <ZanimanjeAutora>Privatni investitor</ZanimanjeAutora>
+                  <ZanimanjeAutora>
+                    {testimonial.node.izjave_korisnika.zanimanjeAutoraIzjave}
+                  </ZanimanjeAutora>
                 </div>
               ))}
             </Carousel>

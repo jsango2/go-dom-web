@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { Link } from "gatsby"
 import { CgCloseR } from "react-icons/cg"
 import Layout from "../components/layout"
+import { IoIosArrowDropright } from "react-icons/io"
 
 // import ProjektiHome from "../components/projekti"
 // import Projekti from "./projekti"
@@ -31,28 +32,32 @@ const Podnaslov = styled.div`
   }
 `
 const MobilneKategorijeWrapPop = styled.div`
-  position: absolute;
+  position: fixed;
+  left: 0;
+  top: 10%;
+
   z-index: 1000;
   display: none;
   border-radius: 5px;
   width: 90%;
-  height: 650px;
+  height: 600px;
   background-color: white;
   text-align: center;
   margin: 0 auto;
-  font-weight: 300;
-  font-size: 22px;
   line-height: 28.5px;
   color: #393939;
   box-shadow: 0px 0px 15px -7px rgba(0, 0, 0, 0.19);
-  @media only screen and (max-width: 48em) {
+  @media only screen and (max-width: 42em) {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    padding-top: 120px;
+    padding-top: 100px;
     padding-bottom: 60px;
-    top: 200px;
+    top: 100px;
+    border: 1px solid #000;
+    outline: 2px dashed #fff;
+    outline-offset: -15px;
   }
 `
 // const Logo = styled.div`
@@ -67,7 +72,7 @@ const Linkovi = styled.div`
   align-items: center;
   justify-content: center;
   margin: 31px auto 25px auto;
-  flex-wrap: WRAP;
+  flex-wrap: wrap;
   position: relative;
   width: 1000px;
   height: auto;
@@ -78,11 +83,14 @@ const Linkovi = styled.div`
     display: none;
   }
 `
+const Icon = styled(IoIosArrowDropright)`
+  transition: all 0.3s linear;
+`
 
 const Links = styled.div`
   cursor: pointer;
   position: relative;
-  margin: 10px 19px;
+  margin: 5px 19px;
   color: #c4c4c4;
   font-weight: 300;
   font-size: 18px;
@@ -161,25 +169,30 @@ const CmsSinglePost = styled.div`
     min-width: 280px;
     height: 235px;
   }
-  @media only screen and (max-width: 360px) {
+  @media only screen and (max-width: 410px) {
     flex-direction: column;
-    width: 99vw;
+    width: 92vw;
     min-width: 280px;
     height: 470px;
   }
+  &:hover .ikona {
+    transform: rotate(90deg);
+  }
 `
 const GornjiDio = styled.div`
+  text-decoration: none;
+
   position: relative;
   z-index: 20;
-  padding: 31px 27px;
+  padding: 27px 27px 0 27px;
   width: 100%;
   height: 235px;
-  @media only screen and (max-width: 48em) {
+  @media only screen and (max-width: 440px) {
     flex-direction: row;
     width: 100%;
     min-width: 200px;
     height: 235px;
-    padding: 31px 17px 15px 17px;
+    padding: 20px 17px 15px 17px;
   }
 `
 const DonjiDio = styled.div`
@@ -187,7 +200,7 @@ const DonjiDio = styled.div`
   width: 100%;
   height: 235px;
   overflow: hidden;
-  @media only screen and (max-width: 48em) {
+  @media only screen and (max-width: 410) {
     flex-direction: row;
     width: 100%;
     height: 235px;
@@ -201,7 +214,7 @@ const WrapProjekti = styled.div`
   width: 95%;
   min-height: 480px;
   font-size: 0;
-  margin: 0 auto 50px auto;
+  margin: 0 auto;
 `
 const Button = styled.div`
   cursor: pointer;
@@ -259,9 +272,7 @@ const IndexPage = ({ data }) => {
         <div
           style={{
             position: "relative",
-            marginTop: "96px",
-            bottom: "0",
-            margin: "20px auto",
+            margin: "120px auto 0 auto",
             zIndex: "2",
             width: "33.5px",
             height: "3px",
@@ -274,7 +285,7 @@ const IndexPage = ({ data }) => {
             fontWeight: "bold",
             fontSize: "35px",
             color: "#71A8BF",
-            marginTop: "31px",
+            marginTop: "25px",
             marginBottom: "31px",
             textAlign: "center",
           }}
@@ -407,22 +418,33 @@ const IndexPage = ({ data }) => {
           }}
         >
           <WrapProjekti>
-            {query.map(post => (
+            {query.slice(0, 12).map(post => (
               <CmsSinglePost key={post.node.id}>
+                {" "}
                 <GornjiDio className="gornji">
-                  <Link to={`/objekt/${post.node.slug}`}>
+                  {" "}
+                  <Link
+                    style={{ textDecoration: "none" }}
+                    to={`/objekt/${post.node.slug}`}
+                  >
                     <div
                       style={{
                         fontWeight: "500",
                         fontSize: "11px",
                         lineHeight: "13px",
-                        marginBottom: "13px",
+                        marginBottom: "12px",
                         fontFamily: "Montserrat Alternates",
                         color: "white",
                         opacity: "0.5",
                       }}
                     >
-                      {post.node.categories.edges[0].node.name}
+                      {post.node.categories.edges[0].node.name ===
+                      "Uncategorized" ? (
+                        <div>GO-DOM PROJEKT</div>
+                      ) : (
+                        post.node.categories.edges[0].node.name
+                      )}
+                      {/* {post.node.categories.edges[0].node.name} */}
                     </div>
                     <div
                       style={{
@@ -432,7 +454,7 @@ const IndexPage = ({ data }) => {
                         fontSize: "16px",
                         lineHeight: "19.5px",
                         color: "#FFF",
-                        marginBottom: "15px",
+                        marginBottom: "12px",
                         textTransform: "uppercase",
                       }}
                     >
@@ -450,21 +472,41 @@ const IndexPage = ({ data }) => {
                       }}
                     >
                       {post.node.dodatniOpis.kratkiOpisFront}
-                    </div>
+                    </div>{" "}
                   </Link>
                 </GornjiDio>
                 <DonjiDio>
-                  <img
-                    src={post.node.dodatniOpis.frontForografija.sourceUrl}
-                    alt="logo"
-                    className="fotka"
-                    style={{
-                      position: "relative",
-                      transition: "all .5s ease-in-out",
-                      height: "100%",
-                      objectFit: "contain",
-                    }}
-                  />
+                  <Link
+                    style={{ textDecoration: "none" }}
+                    to={`/objekt/${post.node.slug}`}
+                  >
+                    <Icon
+                      className="ikona"
+                      style={{
+                        position: "absolute",
+                        zIndex: "21",
+                        color: "white",
+                        fontSize: "24px",
+                        top: "10px",
+                        right: "10px",
+                      }}
+                    />
+                    <div
+                      // src={post.node.dodatniOpis.frontForografija.sourceUrl}
+                      alt="logo"
+                      className="fotka"
+                      style={{
+                        position: "relative",
+                        transition: "all .5s ease-in-out",
+                        height: "100%",
+                        width: "100%",
+                        backgroundSize: "cover",
+                        backgroundImage: `url(${post.node.dodatniOpis.frontForografija.sourceUrl})`,
+                        backgroundPosition: "center",
+                        // transform: "scale(1.1)",
+                      }}
+                    />
+                  </Link>
                 </DonjiDio>
               </CmsSinglePost>
             ))}
@@ -486,7 +528,7 @@ export const query = graphql`
             dodatniOpis {
               kratkiOpisFront
               frontForografija {
-                sourceUrl(size: MEDIUM)
+                sourceUrl(size: MEDIUM_LARGE)
               }
             }
             categories {

@@ -230,7 +230,7 @@ table thead tr th {
 /* Link */
 
 a {
-  color: var(--color-primary);
+  text-decoration: none;
 }
 
 a:hover,
