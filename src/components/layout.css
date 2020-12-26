@@ -409,7 +409,7 @@ center {
 }
 
 .if {
-  width: 100%;
+  width: 92.7%;
   height: 100%;
   position: absolute;
   top: 0;
@@ -419,10 +419,10 @@ center {
   max-width: 90%;
   display: inline-block;
   text-align: left;
-  background: black;
+  background: black !important;
   box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.25);
   margin: 1.2rem;
-  /* padding: 1.2rem; */
+  padding: 0 !important;
   position: relative;
   /* overflow-y: auto; */
 }
