@@ -140,6 +140,16 @@ const MiniWrapBanka = styled.div`
     }
   }
 `
+const Overlay = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  z-index: 2;
+  opacity: 0.4;
+  //
+`
+
 const Button = styled.a`
   cursor: pointer;
   display: flex;
@@ -256,6 +266,8 @@ const KontaktSekcija = () => {
       </PhotoPart>
 
       <PhotoWrapMobile>
+        <Overlay />
+
         <div
           style={{
             position: "absolute",

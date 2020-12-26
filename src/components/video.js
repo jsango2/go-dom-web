@@ -59,14 +59,13 @@ const Video = () => {
   return (
     <>
       <Modal open={open} onClose={onCloseModal} center>
-        <div className="video-container">
+        <div className="videowrapper">
           <iframe
-            width="560"
-            height="315"
+            className="if"
             src="https://www.youtube.com/embed/x0PYGwlcwHY?autoplay=1"
-            frameborder="0"
+            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
+            allowFullScreen
           ></iframe>
         </div>
       </Modal>

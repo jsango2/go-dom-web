@@ -59,8 +59,7 @@ summary {
 }
 audio,
 canvas,
-progress,
-video {
+progress {
   display: inline-block;
 }
 audio:not([controls]) {
@@ -386,24 +385,35 @@ fieldset {
   width: 100% !important;
   height: auto !important;
 } */
-.video-container {
+/* .video-container {
   overflow: hidden;
   position: relative;
+  width: 80%;
+  height: 400px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #000;
+
   width: 80vw;
+} */
+.videowrapper {
+  width: 85vw;
+  max-height: 400px;
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 -> 9/16x100 */
+  overflow: hidden;
+}
+center {
+  text-align: center;
 }
 
-.video-container::after {
-  padding-top: 56.25%;
-  display: block;
-  content: "";
-}
-
-.video-container iframe {
+.if {
+  width: 100%;
+  height: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
 }
 /* ------------------------------------------------ */
 
@@ -994,7 +1004,7 @@ pre tt:after {
 @media screen and (max-width: 660px) {
   .primary-nav {
     top: 0;
-    margin-right: 15%;
+    margin-right: 10%;
   }
   .primary-nav > a {
     margin-left: 22px !important;

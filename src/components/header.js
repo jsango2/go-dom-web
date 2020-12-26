@@ -45,7 +45,7 @@ const Logo = styled.div`
     margin-left: 70px;
     width: 60px;
   }
-  @media only screen and (max-width: 330px) {
+  @media only screen and (max-width: 370px) {
     margin-left: 40px;
   }
 `

@@ -41,9 +41,11 @@ const AutorTestimoniala = styled.div`
   margin-top: 50px;
   color: white;
   @media only screen and (max-width: 48em) {
-    margin-top: 140px;
+    margin-top: 130px;
   }
   @media only screen and (max-width: 360px) {
+    margin-top: 110px;
+
     font-size: 16px;
     line-height: 19.5px;
   }
@@ -78,6 +80,8 @@ const Paragraf = styled.div`
     margin-top: 150px;
   }
   @media only screen and (max-width: 360px) {
+    margin-top: 200px;
+    width: 85%;
     font-size: 16px;
     line-height: 19.5px;
   }
@@ -126,8 +130,10 @@ const Testimonial = () => {
               style={{
                 position: "absolute",
                 zIndex: "100",
-                top: "60px",
-                left: "47%",
+                top: "90px",
+                left: "50%",
+                transform: " translate(-50%, -50%)",
+
                 display: "inline-block",
                 opacity: "0.6",
               }}

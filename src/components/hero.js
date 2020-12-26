@@ -46,9 +46,11 @@ const TextHero = styled.div`
   z-index: 990;
   @media only screen and (max-width: 76em) {
     font-size: 38px;
+    line-height: 49px;
   }
   @media only screen and (max-width: 48em) {
-    font-size: 36px;
+    font-size: 30px;
+    line-height: 38px;
   }
 `
 const WrapText = styled.div`
