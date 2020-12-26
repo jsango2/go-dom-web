@@ -368,7 +368,7 @@ fieldset {
   animation-delay: 2.25s;
 }
 .show-Link:nth-of-type(10) {
-  animation-delay: 2.5s;
+  animation-delay: 2.51s;
 }
 
 @keyframes slideRight {
