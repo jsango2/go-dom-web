@@ -26,13 +26,13 @@ exports.createPages = async ({ graphql, actions }) => {
     `
   )
 
-  if (result.errors) {
-    reporter.panicOnBuild(
-      `There was an error loading your blog posts`,
-      result.errors
-    )
-    return
-  }
+  // if (result.errors) {
+  //   reporter.panicOnBuild(
+  //     `There was an error loading your blog posts`,
+  //     result.errors
+  //   )
+  //   return
+  // }
 
   const posts = result.data.objekt.posts.edges
 
