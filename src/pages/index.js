@@ -41,6 +41,7 @@ const MobilneKategorijeWrapPop = styled.div`
   border-radius: 5px;
   width: 90%;
   height: 600px;
+  overflow: hidden;
   background-color: white;
   text-align: center;
   margin: 0 auto;
