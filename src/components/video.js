@@ -63,7 +63,7 @@ const Video = () => {
         onClose={onCloseModal}
         classNames={{
           container: "customOverlay",
-          modal: "customModal",
+          modal: "customModal2",
         }}
         center
       >

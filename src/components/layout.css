@@ -409,7 +409,7 @@ center {
 }
 
 .if {
-  width: 92.7%;
+  width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
@@ -427,6 +427,7 @@ center {
   /* overflow-y: auto; */
 }
 .customModal {
+  max-width: 80%;
   width: 0;
   /* height: 100%; */
   content: "";
@@ -1049,11 +1050,6 @@ pre tt:after {
   position: relative;
 }
 
-.customModal {
-  background: black;
-  max-width: 80%;
-  width: 80%;
-}
 .headroom {
   top: 0;
   left: 0;
