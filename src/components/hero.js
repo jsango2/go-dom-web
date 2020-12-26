@@ -63,13 +63,20 @@ const WrapText = styled.div`
 
   transform: translate(-50%, -50%);
   @media only screen and (max-width: 76em) {
+    left: 50%;
     top: 90%;
+    z-index: 990;
+
+    transform: translate(-50%, -50%);
     width: 468px;
   }
   @media only screen and (max-width: 48em) {
-    margin-top: 160px;
-    top: 50%;
+    ${"" /* margin-top: 160px; */}
     left: 50%;
+    top: 100%;
+    z-index: 990;
+
+    transform: translate(-50%, -50%);
     width: 80%;
   }
 `
@@ -83,6 +90,11 @@ const PostMobile = styled.div`
   position: relative;
   height: 635px;
   margin: 0;
+  @media only screen and (max-width: 36opx) {
+    img {
+      height: 100%;
+    }
+  }
 `
 const TankaLinija = styled.div`
   position: absolute;
@@ -117,7 +129,7 @@ const Hero = () => (
         showThumbs={false}
         showStatus={false}
         autoPlay={true}
-        interval={3000}
+        interval={5000}
         showIndicators={false}
       >
         <TextHero>IZVODIMO SVE VRSTE GRAĐEVINSKIH RADOVA</TextHero>
@@ -139,34 +151,43 @@ const Hero = () => (
         axis="vertical"
       >
         <PostMobile>
-          <img
-            src={Vert1}
-            alt="vert1"
+          <div
             style={{
+              position: "absolute",
               width: "100%",
-              objectFit: "contain",
+              height: "100%",
+              backgroundImage: `url(${Vert1})`,
+              backgroundPosition: "center",
+              backgroundSize: "cover ",
+              zIndex: "1",
             }}
-          />
+          ></div>
         </PostMobile>
         <PostMobile>
-          <img
-            src={Vert2}
-            alt="vert1"
+          <div
             style={{
+              position: "absolute",
               width: "100%",
-              objectFit: "contain",
+              height: "100%",
+              backgroundImage: `url(${Vert2})`,
+              backgroundPosition: "center",
+              backgroundSize: "cover ",
+              zIndex: "1",
             }}
-          />
+          ></div>
         </PostMobile>
         <PostMobile>
-          <img
-            src={Vert5}
-            alt="vert1"
+          <div
             style={{
+              position: "absolute",
               width: "100%",
-              objectFit: "contain",
+              height: "100%",
+              backgroundImage: `url(${Vert5})`,
+              backgroundPosition: "center",
+              backgroundSize: "cover ",
+              zIndex: "1",
             }}
-          />
+          ></div>
         </PostMobile>
       </Carousel>
     </SingleCarouselMobile>
