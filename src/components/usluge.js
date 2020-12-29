@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import styled from "styled-components"
 import pic1 from "../images/meni1.png"
 import pic2 from "../images/blue2.jpg"
@@ -8,7 +8,6 @@ import pic5 from "../images/meni6.png"
 import pic6 from "../images/meni7.png"
 import FadeInSection from "./fadeIn"
 import UslugeMobilno from "./uslugeMobilno"
-import { useSpring, animated as a } from "react-spring"
 
 const Wrap = styled.div`
   ${"" /* padding-top: 15px; */}

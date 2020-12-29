@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
 import { Link } from "gatsby"
 import { CgCloseR } from "react-icons/cg"
 import Layout from "../components/layout"
 import { IoIosArrowDropright } from "react-icons/io"
+import Loader from "react-loader-spinner"
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 
 // import ProjektiHome from "../components/projekti"
 // import Projekti from "./projekti"
-// import SEO from "../components/seo"
+import SEO from "../components/seo"
+import { useHasBeenVisible } from "./../components/useVisibility"
 
 const Wrap = styled.div`
   position: relative;
@@ -242,6 +245,15 @@ const Button = styled.div`
 `
 
 const IndexPage = ({ data }) => {
+  // ------visibility lazy loading------------
+
+  const halfPage = useRef()
+  const preload = useRef()
+  const hasScrolled = useHasBeenVisible(halfPage)
+  const isScrolling = useHasBeenVisible(preload)
+
+  // --------------------------------------
+
   const [kategorija, setKategorija] = useState("SVI")
   const [current, setCurrent] = useState(null)
   const [isOpen, setisOpen] = useState(false)
@@ -254,7 +266,11 @@ const IndexPage = ({ data }) => {
     )
     setQuery(filteredData)
     if (kategorija === "SVI") {
-      setQuery(data.wpgraphql.posts.edges)
+      setQuery(
+        queryData.filter(elem =>
+          elem.node.categories.edges.some(elem => elem.node.name === "FEATURED")
+        )
+      )
     }
   }, [kategorija])
 
@@ -266,7 +282,7 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout isOpen={isOpen}>
-      {/* <SEO title="Home" /> */}
+      <SEO title="Home" />
 
       {/* <ProjektiHome></ProjektiHome> */}
       <Wrap>
@@ -418,100 +434,114 @@ const IndexPage = ({ data }) => {
             justifyContent: "center",
           }}
         >
-          <WrapProjekti>
-            {query.slice(0, 12).map(post => (
-              <CmsSinglePost key={post.node.id}>
-                {" "}
-                <GornjiDio className="gornji">
+          {hasScrolled || isScrolling ? (
+            <WrapProjekti>
+              {query.slice(0, 12).map(post => (
+                <CmsSinglePost key={post.node.id}>
                   {" "}
-                  <Link
-                    style={{ textDecoration: "none" }}
-                    to={`/objekt/${post.node.slug}`}
-                  >
-                    <div
-                      style={{
-                        fontWeight: "500",
-                        fontSize: "11px",
-                        lineHeight: "13px",
-                        marginBottom: "12px",
-                        fontFamily: "Montserrat Alternates",
-                        color: "white",
-                        opacity: "0.5",
-                      }}
+                  <GornjiDio className="gornji">
+                    {" "}
+                    <Link
+                      style={{ textDecoration: "none" }}
+                      to={`/objekt/${post.node.slug}`}
                     >
-                      {post.node.categories.edges[0].node.name ===
-                      "Uncategorized" ? (
-                        <div>GO-DOM PROJEKT</div>
-                      ) : (
-                        post.node.categories.edges[0].node.name
-                      )}
-                      {/* {post.node.categories.edges[0].node.name} */}
-                    </div>
-                    <div
-                      style={{
-                        maxWidth: "213px",
-                        width: "160px",
-                        fontWeight: "700",
-                        fontSize: "16px",
-                        lineHeight: "19.5px",
-                        color: "#FFF",
-                        marginBottom: "12px",
-                        textTransform: "uppercase",
-                      }}
+                      <div
+                        style={{
+                          fontWeight: "500",
+                          fontSize: "11px",
+                          lineHeight: "13px",
+                          marginBottom: "12px",
+                          fontFamily: "Montserrat Alternates",
+                          color: "white",
+                          opacity: "0.5",
+                        }}
+                      >
+                        {post.node.categories.edges[0].node.name ===
+                        "FEATURED" ? (
+                          <div>{post.node.categories.edges[1].node.name}</div>
+                        ) : (
+                          post.node.categories.edges[0].node.name
+                        )}
+                        {/* {post.node.categories.edges[0].node.name} */}
+                      </div>
+                      <div
+                        style={{
+                          maxWidth: "213px",
+                          width: "160px",
+                          fontWeight: "700",
+                          fontSize: "16px",
+                          lineHeight: "19.5px",
+                          color: "#FFF",
+                          marginBottom: "12px",
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        {post.node.title}
+                      </div>
+                      <div
+                        style={{
+                          width: "100%",
+                          fontWeight: "400",
+                          fontStyle: "normal",
+                          fontSize: "14px",
+                          lineHeight: "19px",
+                          color: "#FFF",
+                          marginBottom: "15px",
+                        }}
+                      >
+                        {post.node.dodatniOpis.kratkiOpisFront}
+                      </div>{" "}
+                    </Link>
+                  </GornjiDio>
+                  <DonjiDio>
+                    <Link
+                      style={{ textDecoration: "none" }}
+                      to={`/objekt/${post.node.slug}`}
                     >
-                      {post.node.title}
-                    </div>
-                    <div
-                      style={{
-                        width: "100%",
-                        fontWeight: "400",
-                        fontStyle: "normal",
-                        fontSize: "14px",
-                        lineHeight: "19px",
-                        color: "#FFF",
-                        marginBottom: "15px",
-                      }}
-                    >
-                      {post.node.dodatniOpis.kratkiOpisFront}
-                    </div>{" "}
-                  </Link>
-                </GornjiDio>
-                <DonjiDio>
-                  <Link
-                    style={{ textDecoration: "none" }}
-                    to={`/objekt/${post.node.slug}`}
-                  >
-                    <Icon
-                      className="ikona"
-                      style={{
-                        position: "absolute",
-                        zIndex: "21",
-                        color: "white",
-                        fontSize: "24px",
-                        top: "10px",
-                        right: "10px",
-                      }}
-                    />
-                    <div
-                      // src={post.node.dodatniOpis.frontForografija.sourceUrl}
-                      alt="logo"
-                      className="fotka"
-                      style={{
-                        position: "relative",
-                        transition: "all .5s ease-in-out",
-                        height: "100%",
-                        width: "100%",
-                        backgroundSize: "cover",
-                        backgroundImage: `url(${post.node.dodatniOpis.frontForografija.sourceUrl})`,
-                        backgroundPosition: "center",
-                        // transform: "scale(1.1)",
-                      }}
-                    />
-                  </Link>
-                </DonjiDio>
-              </CmsSinglePost>
-            ))}
-          </WrapProjekti>
+                      <Icon
+                        className="ikona"
+                        style={{
+                          position: "absolute",
+                          zIndex: "21",
+                          color: "white",
+                          fontSize: "24px",
+                          top: "10px",
+                          right: "10px",
+                        }}
+                      />
+                      <div
+                        // src={post.node.dodatniOpis.frontForografija.sourceUrl}
+                        alt="logo"
+                        className="fotka"
+                        style={{
+                          position: "relative",
+                          transition: "all .5s ease-in-out",
+                          height: "100%",
+                          width: "100%",
+                          backgroundSize: "cover",
+                          backgroundImage: `url(${post.node.dodatniOpis.frontForografija.sourceUrl})`,
+                          backgroundPosition: "center",
+                          // transform: "scale(1.1)",
+                        }}
+                      />
+                    </Link>
+                  </DonjiDio>
+                </CmsSinglePost>
+              ))}
+            </WrapProjekti>
+          ) : (
+            <div
+              style={{
+                minHeight: "450px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+              ref={halfPage}
+            >
+              <Loader type="Rings" color="#71A8BF" height={100} width={100} />
+            </div>
+          )}
         </div>
       </Wrap>
     </Layout>

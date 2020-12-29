@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef } from "react"
 import { graphql } from "gatsby"
 import styled from "styled-components"
 import Header from "../components/header"
@@ -8,6 +8,8 @@ import PhotoGrid from "../components/postPhotosGrid"
 import Footer from "../components/footer"
 import { Link } from "gatsby"
 import { IoIosArrowDropright } from "react-icons/io"
+import { useHasBeenVisible } from "./../components/useVisibility"
+import Loader from "react-loader-spinner"
 
 const Wrap = styled.div`
   position: relative;
@@ -108,133 +110,167 @@ const DonjiDio = styled.div`
     height: 235px;
   }
 `
-const Objekt = ({ data }) => (
-  <>
-    <Wrap>
-      <Header />
-      <div style={{ position: "relative" }}>
-        <HeroPage
-          lokacija={data.wpgraphql.post.dodatniOpis.lokacijaObjekta}
-          imeProjekta={data.wpgraphql.post.title}
-          kratkiTekst={data.wpgraphql.post.dodatniOpis.kratkiOpisFront}
-          photoFull={data.wpgraphql.post.dodatniOpis.frontForografija.sourceUrl}
+const Objekt = ({ data }) => {
+  // ------visibility lazy loading------------
+
+  const halfPage = useRef()
+  const preload = useRef()
+  const hasScrolled = useHasBeenVisible(halfPage)
+  const isScrolling = useHasBeenVisible(preload)
+
+  // --------------------------------------
+
+  return (
+    <>
+      <Wrap>
+        <Header />
+        <div style={{ position: "relative" }}>
+          <HeroPage
+            lokacija={data.wpgraphql.post.dodatniOpis.lokacijaObjekta}
+            imeProjekta={data.wpgraphql.post.title}
+            kratkiTekst={data.wpgraphql.post.dodatniOpis.kratkiOpisFront}
+            photoFull={
+              data.wpgraphql.post.dodatniOpis.frontForografija.sourceUrl
+            }
+          />
+        </div>
+        <PostJenDvaTri data={data.wpgraphql.post.dodatniOpis} />
+        <PhotoGrid
+          foto={data.wpgraphql.post.dodatniOpis}
+          // foto2={data.wpgraphql.post.dodatniOpis.foto2.sourceUrl}
+          // foto3={data.wpgraphql.post.dodatniOpis.foto3.sourceUrl}
+          // foto4={data.wpgraphql.post.dodatniOpis.foto4.sourceUrl}
+          // foto5={data.wpgraphql.post.dodatniOpis.foto5.sourceUrl}
+          // foto6={data.wpgraphql.post.dodatniOpis.foto6.sourceUrl}
         />
-      </div>
-      <PostJenDvaTri data={data.wpgraphql.post.dodatniOpis} />
-      <PhotoGrid
-        foto={data.wpgraphql.post.dodatniOpis}
-        // foto2={data.wpgraphql.post.dodatniOpis.foto2.sourceUrl}
-        // foto3={data.wpgraphql.post.dodatniOpis.foto3.sourceUrl}
-        // foto4={data.wpgraphql.post.dodatniOpis.foto4.sourceUrl}
-        // foto5={data.wpgraphql.post.dodatniOpis.foto5.sourceUrl}
-        // foto6={data.wpgraphql.post.dodatniOpis.foto6.sourceUrl}
-      />
-      {console.log(data)}
-      <div
-        style={{
-          fontWeight: "300",
-          fontSize: "28px",
-          lineHeight: "34px",
-          textAlign: "center",
-          marginBottom: "30px",
-          marginTop: "90px",
-        }}
-      >
-        Pogledajte i ostale projekte
-      </div>
-      <div
-        style={{
-          margin: "0 auto 250px auto",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          width: "95%",
-          flexWrap: "wrap",
-          minHeight: "480px",
-        }}
-      >
-        {data.wpgraphql.posts.edges.slice(0, 6).map(post => (
-          <CmsSinglePost key={post.node.id}>
-            <GornjiDio className="gornji">
-              <Link to={`/objekt/${post.node.slug}`}>
-                <div
-                  style={{
-                    fontWeight: "500",
-                    fontSize: "11px",
-                    lineHeight: "13px",
-                    marginBottom: "13px",
-                    fontFamily: "Montserrat Alternates",
-                    color: "white",
-                    opacity: "0.5",
-                  }}
-                >
-                  {post.node.categories.edges[0].node.name}
-                </div>
-                <div
-                  style={{
-                    maxwidth: "213px",
-                    fontWeight: "700",
-                    fontSize: "16px",
-                    lineHeight: "19.5px",
-                    color: "#FFF",
-                    marginBottom: "15px",
-                    textTransform: "uppercase",
-                  }}
-                >
-                  {post.node.title}
-                </div>
-                <div
-                  style={{
-                    width: "100%",
-                    fontWeight: "400",
-                    fontStyle: "normal",
-                    fontSize: "14px",
-                    lineHeight: "19px",
-                    color: "#FFF",
-                    marginBottom: "15px",
-                  }}
-                >
-                  {post.node.dodatniOpis.kratkiOpisFront}
-                </div>
-              </Link>
-            </GornjiDio>
-            <DonjiDio>
-              <Link to={`/objekt/${post.node.slug}`}>
-                <div
-                  // src={post.node.dodatniOpis.frontForografija.sourceUrl}
-                  alt="logo"
-                  className="fotka"
-                  style={{
-                    position: "relative",
-                    transition: "all .5s ease-in-out",
-                    height: "100%",
-                    width: "100%",
-                    backgroundSize: "cover",
-                    backgroundImage: `url(${post.node.dodatniOpis.frontForografija.sourceUrl})`,
-                    backgroundPosition: "center",
-                    // transform: "scale(1.1)",
-                  }}
-                />
-                <Icon
-                  className="ikona"
-                  style={{
-                    position: "absolute",
-                    zIndex: "21",
-                    color: "white",
-                    fontSize: "24px",
-                    top: "10px",
-                    right: "10px",
-                  }}
-                />
-              </Link>
-            </DonjiDio>
-          </CmsSinglePost>
-        ))}
-      </div>
-      <Footer />
-    </Wrap>
-  </>
-)
+        <div
+          style={{
+            fontWeight: "300",
+            fontSize: "28px",
+            lineHeight: "34px",
+            textAlign: "center",
+            marginBottom: "30px",
+            marginTop: "90px",
+          }}
+        >
+          Pogledajte i ostale projekte
+        </div>
+
+        <div
+          style={{
+            margin: "0 auto 250px auto",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "95%",
+            flexWrap: "wrap",
+            minHeight: "480px",
+          }}
+        >
+          {hasScrolled || isScrolling ? (
+            <>
+              {data.wpgraphql.posts.edges.slice(0, 6).map(post => (
+                <CmsSinglePost key={post.node.id}>
+                  <GornjiDio className="gornji">
+                    <Link to={`/objekt/${post.node.slug}`}>
+                      <div
+                        style={{
+                          fontWeight: "500",
+                          fontSize: "11px",
+                          lineHeight: "13px",
+                          marginBottom: "13px",
+                          fontFamily: "Montserrat Alternates",
+                          color: "white",
+                          opacity: "0.5",
+                        }}
+                      >
+                        {post.node.categories.edges[0].node.name ===
+                        "FEATURED" ? (
+                          <div>{post.node.categories.edges[1].node.name}</div>
+                        ) : (
+                          post.node.categories.edges[0].node.name
+                        )}
+                      </div>
+                      <div
+                        style={{
+                          maxwidth: "213px",
+                          fontWeight: "700",
+                          fontSize: "16px",
+                          lineHeight: "19.5px",
+                          color: "#FFF",
+                          marginBottom: "15px",
+                          textTransform: "uppercase",
+                        }}
+                      >
+                        {post.node.title}
+                      </div>
+                      <div
+                        style={{
+                          width: "100%",
+                          fontWeight: "400",
+                          fontStyle: "normal",
+                          fontSize: "14px",
+                          lineHeight: "19px",
+                          color: "#FFF",
+                          marginBottom: "15px",
+                        }}
+                      >
+                        {post.node.dodatniOpis.kratkiOpisFront}
+                      </div>
+                    </Link>
+                  </GornjiDio>
+                  <DonjiDio>
+                    <Link to={`/objekt/${post.node.slug}`}>
+                      <div
+                        // src={post.node.dodatniOpis.frontForografija.sourceUrl}
+                        alt="logo"
+                        className="fotka"
+                        style={{
+                          position: "relative",
+                          transition: "all .5s ease-in-out",
+                          height: "100%",
+                          width: "100%",
+                          backgroundSize: "cover",
+                          backgroundImage: `url(${post.node.dodatniOpis.frontForografija.sourceUrl})`,
+                          backgroundPosition: "center",
+                          // transform: "scale(1.1)",
+                        }}
+                      />
+                      <Icon
+                        className="ikona"
+                        style={{
+                          position: "absolute",
+                          zIndex: "21",
+                          color: "white",
+                          fontSize: "24px",
+                          top: "10px",
+                          right: "10px",
+                        }}
+                      />
+                    </Link>
+                  </DonjiDio>
+                </CmsSinglePost>
+              ))}{" "}
+            </>
+          ) : (
+            <div
+              style={{
+                minHeight: "450px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+              ref={halfPage}
+            >
+              <Loader type="Rings" color="#71A8BF" height={100} width={100} />
+            </div>
+          )}
+        </div>
+        <Footer />
+      </Wrap>
+    </>
+  )
+}
 
 export const query = graphql`
   query MyQuery($slug: ID!) {

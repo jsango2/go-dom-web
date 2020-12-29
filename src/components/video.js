@@ -32,10 +32,11 @@ const BGvideo = styled.div`
     height: 140%;
   }
   @media only screen and (max-width: 530px) {
-    height: 120%;
+    height: 130%;
   }
   @media only screen and (max-width: 410px) {
-    top: -590px;
+    height: 160%;
+    ${"" /* top: -570px; */}
   }
 `
 
@@ -69,6 +70,7 @@ const Video = () => {
       >
         <div className="videowrapper">
           <iframe
+            title="video GO"
             className="if"
             src="https://www.youtube.com/embed/x0PYGwlcwHY?autoplay=1"
             frameBorder="0"

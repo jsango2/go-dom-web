@@ -24,7 +24,6 @@ const SinglePhoto = styled.div`
 `
 const PhotoGrid = props => (
   <Wrap>
-    {console.log(props.foto.foto2)}
     <SinglePhoto>
       {props.foto.foto1 !== null ? (
         <img

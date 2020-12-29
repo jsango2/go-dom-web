@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import PropTypes from "prop-types"
 // import { useStaticQuery, graphql } from "gatsby"
 // import styled from "styled-components"
@@ -19,20 +19,17 @@ import Jedandvatri from "./jedandvatri"
 import Dogovorite from "./dogovorite"
 import Video from "./video"
 import Footer from "./footer"
-import Blueprint from "../images/blueprint.svg"
-import Pravokutnik from "../images/pravokutnik.svg"
 import KontaktSekcija from "./kontaktSekcija"
-import ImageTest from "./gatsbyImageTest"
 
 const Layout = ({ isOpen, children }) => {
-  const [offsetY, setOffsetY] = useState(0)
-  const handleScroll = () => setOffsetY(window.pageYOffset)
+  // const [offsetY, setOffsetY] = useState(0)
+  // const handleScroll = () => setOffsetY(window.pageYOffset)
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll)
+  // useEffect(() => {
+  //   window.addEventListener("scroll", handleScroll)
 
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  //   return () => window.removeEventListener("scroll", handleScroll)
+  // }, [])
   return (
     <div style={{ width: "100%", height: "auto", overflow: "hidden" }}>
       <div className={` ${isOpen ? "dark" : ""} `}></div>

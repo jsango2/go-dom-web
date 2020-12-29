@@ -69,8 +69,6 @@ const Text = styled.div`
 
 const PostJenDvaTri = props => (
   <Wrap>
-    {console.log(props.data)}
-
     <Blok>
       <Broj>01</Broj>
       <WrapPost>

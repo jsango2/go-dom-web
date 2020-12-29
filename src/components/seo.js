@@ -16,8 +16,10 @@ const SEO = ({ description, lang, meta, title }) => {
       query {
         site {
           siteMetadata {
-            title
+            image
             description
+            siteUrl
+            title
           }
         }
       }
@@ -26,6 +28,7 @@ const SEO = ({ description, lang, meta, title }) => {
 
   const metaDescription = description || site.siteMetadata.description
   const defaultTitle = site.siteMetadata?.title
+  const image = site.siteMetadata?.image
 
   return (
     <Helmet
@@ -54,6 +57,10 @@ const SEO = ({ description, lang, meta, title }) => {
         {
           name: `twitter:card`,
           content: `summary`,
+        },
+        {
+          name: " twitter: image",
+          content: image,
         },
       ].concat(meta)}
     />

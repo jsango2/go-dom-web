@@ -1,12 +1,13 @@
 module.exports = {
   siteMetadata: {
-    title: `GO - Dom`,
+    title: `GO-Dom`,
     author: {
       name: `Sutra.hr`,
-      summary: `Let's go!.`,
+      summary: `Građevinski obrt Dom. Specijalizirana građevinska tvrtka za izgradnju i građevinske radove na otocima Ugljanu i pašmanu. Ključ u ruke, rekonstrukcija, tradicionalna gradnja i kamen, fasade i izolacije, uređenje interijera, bazenski sustavi.  `,
     },
-    description: `Građevinski obrt DOM`,
+    description: `Građevinski obrt DOM. Specijalizirana građevinska tvrtka za izgradnju i građevinske radove na otocima Ugljanu i pašmanu. Ključ u ruke, rekonstrukcija, tradicionalna gradnja i kamen, fasade i izolacije, uređenje interijera, bazenski sustavi.`,
     siteUrl: `https://cms.gradevinskiobrt-dom.hr`,
+    image: "/seoPhoto.png",
   },
 
   plugins: [
@@ -27,17 +28,7 @@ module.exports = {
         // Add any options here
       },
     },
-    {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: [
-          `Montserrat Alternates\:500`,
-          `Montserrat\:300,400,500,700,800`,
-          // you can also specify font weights and styles
-        ],
-        display: "swap",
-      },
-    },
+
     {
       resolve: "gatsby-plugin-anchor-links",
       options: {
@@ -59,6 +50,7 @@ module.exports = {
         name: `assets`,
       },
     },
+
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -66,6 +58,17 @@ module.exports = {
         name: `images`,
       },
     },
+    // {
+    //   resolve: `gatsby-plugin-google-fonts`,
+    //   options: {
+    //     fonts: [
+    //       `Montserrat\:300,400,500,700,800`,
+    //       `Montserrat Alternates\:500`, // you can also specify font weights and styles
+    //     ],
+    //     display: "swap",
+    //   },
+    // },
+
     {
       resolve: `gatsby-transformer-remark`,
       options: {
@@ -99,8 +102,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `Gatsby Starter Blog`,
-        short_name: `GatsbyJS`,
+        name: `GO-Dom Građevinski obrt`,
+        short_name: `GO-Dom`,
         start_url: `/`,
         background_color: `#ffffff`,
         theme_color: `#663399`,

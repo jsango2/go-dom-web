@@ -5,7 +5,6 @@ import { AnchorLink } from "gatsby-plugin-anchor-links"
 import logo from "../images/LogoTopsvg.svg"
 import Headroom from "react-headroom"
 import styled from "styled-components"
-import { useSpring, animated } from "react-spring"
 
 const HeaderWrap = styled.div`
   margin: 0 auto;
@@ -45,7 +44,7 @@ const Logo = styled.div`
     margin-left: 70px;
     width: 60px;
   }
-  @media only screen and (max-width: 370px) {
+  @media only screen and (max-width: 430px) {
     margin-left: 40px;
   }
 `
