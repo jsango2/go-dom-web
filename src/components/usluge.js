@@ -87,6 +87,8 @@ const Linija = styled.div`
   width: 33.5px;
   height: 3px;
   background-color: #71a8bf;
+  transform: translate(-50%, -50%);
+
   @media only screen and (max-width: 48em) {
   }
 `
