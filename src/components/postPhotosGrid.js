@@ -15,7 +15,7 @@ const SinglePhoto = styled.div`
   position: relative;
   width: 424px;
   height: 320px;
-  background-color: black;
+  background-color: white;
   overflow: hidden;
   @media only screen and (max-width: 57em) {
     width: 47vw;
@@ -24,132 +24,143 @@ const SinglePhoto = styled.div`
 `
 const PhotoGrid = props => (
   <Wrap>
-    <SinglePhoto>
-      {props.foto.foto1 !== null ? (
-        <img
-          src={props.foto.foto1.sourceUrl}
-          alt="foto1"
-          style={{
-            position: "relative",
-            height: "100%",
-            objectFit: "contain",
-          }}
-        />
-      ) : (
+    {props.foto.foto1 !== null ? (
+      <SinglePhoto>
         <div
           style={{
-            position: "relative",
+            position: "absolute",
+            width: "100%",
             height: "100%",
-            objectFit: "contain",
+            backgroundImage: `url(${props.foto.foto1.sourceUrl})`,
+            backgroundPosition: "center",
+            backgroundSize: "cover ",
           }}
         ></div>
-      )}
-    </SinglePhoto>
-    <SinglePhoto>
-      {props.foto.foto2 !== null ? (
-        <img
-          src={props.foto.foto2.sourceUrl}
-          alt="foto1"
-          style={{
-            position: "relative",
-            height: "100%",
-            objectFit: "contain",
-          }}
-        />
-      ) : (
+      </SinglePhoto>
+    ) : (
+      <div
+        style={{
+          position: "relative",
+          height: "0",
+          backgroundColor: "white",
+        }}
+      ></div>
+    )}
+
+    {props.foto.foto2 !== null ? (
+      <SinglePhoto>
         <div
           style={{
-            position: "relative",
+            position: "absolute",
+            width: "100%",
             height: "100%",
-            objectFit: "contain",
+            backgroundImage: `url(${props.foto.foto2.sourceUrl})`,
+            backgroundPosition: "center",
+            backgroundSize: "cover ",
           }}
-        ></div>
-      )}
-    </SinglePhoto>{" "}
-    <SinglePhoto>
-      {props.foto.foto3 !== null ? (
-        <img
-          src={props.foto.foto3.sourceUrl}
-          alt="foto1"
-          style={{
-            position: "relative",
-            height: "100%",
-            objectFit: "contain",
-          }}
-        />
-      ) : (
+        ></div>{" "}
+      </SinglePhoto>
+    ) : (
+      <div
+        style={{
+          position: "relative",
+          height: "0",
+          backgroundColor: "white",
+        }}
+      ></div>
+    )}
+
+    {props.foto.foto3 !== null ? (
+      <SinglePhoto>
         <div
           style={{
-            position: "relative",
+            position: "absolute",
+            width: "100%",
             height: "100%",
-            objectFit: "contain",
+            backgroundImage: `url(${props.foto.foto3.sourceUrl})`,
+            backgroundPosition: "center",
+            backgroundSize: "cover ",
           }}
         ></div>
-      )}
-    </SinglePhoto>{" "}
-    <SinglePhoto>
-      {props.foto.foto4 !== null ? (
-        <img
-          src={props.foto.foto4.sourceUrl}
-          alt="foto1"
-          style={{
-            position: "relative",
-            height: "100%",
-            objectFit: "contain",
-          }}
-        />
-      ) : (
+      </SinglePhoto>
+    ) : (
+      <div
+        style={{
+          position: "relative",
+          height: "0",
+          backgroundColor: "white",
+        }}
+      ></div>
+    )}
+
+    {props.foto.foto4 !== null ? (
+      <SinglePhoto>
         <div
           style={{
-            position: "relative",
+            position: "absolute",
+            width: "100%",
             height: "100%",
-            objectFit: "contain",
+            backgroundImage: `url(${props.foto.foto4.sourceUrl})`,
+            backgroundPosition: "center",
+            backgroundSize: "cover ",
           }}
-        ></div>
-      )}
-    </SinglePhoto>{" "}
-    <SinglePhoto>
-      {props.foto.foto5 !== null ? (
-        <img
-          src={props.foto.foto5.sourceUrl}
-          alt="foto1"
-          style={{
-            position: "relative",
-            height: "100%",
-            objectFit: "contain",
-          }}
-        />
-      ) : (
+        ></div>{" "}
+      </SinglePhoto>
+    ) : (
+      <div
+        style={{
+          position: "relative",
+          height: "0",
+          backgroundColor: "white",
+        }}
+      ></div>
+    )}
+
+    {props.foto.foto5 !== null ? (
+      <SinglePhoto>
         <div
           style={{
-            position: "relative",
+            position: "absolute",
+            width: "100%",
             height: "100%",
-            objectFit: "contain",
+            backgroundImage: `url(${props.foto.foto5.sourceUrl})`,
+            backgroundPosition: "center",
+            backgroundSize: "cover ",
           }}
-        ></div>
-      )}
-    </SinglePhoto>
-    <SinglePhoto>
-      {props.foto.foto6 !== null ? (
-        <img
-          src={props.foto.foto6.sourceUrl}
-          alt="foto1"
-          style={{
-            position: "relative",
-            height: "100%",
-            objectFit: "contain",
-          }}
-        />
-      ) : (
+        ></div>{" "}
+      </SinglePhoto>
+    ) : (
+      <div
+        style={{
+          position: "relative",
+          height: "0",
+          backgroundColor: "white",
+        }}
+      ></div>
+    )}
+
+    {props.foto.foto6 !== null ? (
+      <SinglePhoto>
         <div
           style={{
-            position: "relative",
+            position: "absolute",
+            width: "100%",
             height: "100%",
-            objectFit: "contain",
+            backgroundImage: `url(${props.foto.foto6.sourceUrl})`,
+            backgroundPosition: "center",
+            backgroundSize: "cover ",
           }}
         ></div>
-      )}
-    </SinglePhoto>
+      </SinglePhoto>
+    ) : (
+      <div
+        style={{
+          position: "relative",
+          height: "0",
+          backgroundColor: "white",
+        }}
+      ></div>
+    )}
   </Wrap>
 )
 

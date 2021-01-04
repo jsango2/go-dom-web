@@ -56,8 +56,14 @@ const ZanimanjeAutora = styled.div`
   font-style: italic;
   font-weight: 300;
   line-height: 28.49px;
+  margin: 0 auto;
   color: white;
-
+  width: 60%;
+  @media only screen and (max-width: 430px) {
+    width: 75%;
+    margin: 0 auto;
+    font-size: 19px;
+  }
   @media only screen and (max-width: 360px) {
     font-size: 16px;
     line-height: 19.5px;

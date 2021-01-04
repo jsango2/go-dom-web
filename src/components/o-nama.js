@@ -61,7 +61,7 @@ const OnamaHero = styled.div`
   }
   @media only screen and (max-width: 768px) {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
     flex-direction: column;
     width: 100%;
@@ -109,6 +109,7 @@ const LukaPikunic = styled.div`
   }
 `
 const OnamaText = styled.div`
+  font-family: "Montserrat";
   position: relative;
   z-index: 5;
   color: #393939;
@@ -141,6 +142,7 @@ const OnamaNaslov = styled.div`
   }
   @media only screen and (max-width: 768px) {
     margin: 70px auto 32px auto;
+    width: 70%;
   }
   @media only screen and (max-width: 320px) {
   }
@@ -190,7 +192,8 @@ const Button = styled.a`
     marginleft: 108px;
   }
   @media only screen and (max-width: 768px) {
-    margin: 0 auto 54px auto;
+    margin-bottom: 54px;
+    margin-left: 15%;
   }
   @media only screen and (max-width: 420px) {
     ${"" /* bottom: 49px;

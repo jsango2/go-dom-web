@@ -1,13 +1,15 @@
 module.exports = {
   siteMetadata: {
-    title: `GO-Dom`,
+    title: `Građevinski obrt Dom`,
     author: {
       name: `Sutra.hr`,
-      summary: `Građevinski obrt Dom. Specijalizirana građevinska tvrtka za izgradnju i građevinske radove na otocima Ugljanu i pašmanu. Ključ u ruke, rekonstrukcija, tradicionalna gradnja i kamen, fasade i izolacije, uređenje interijera, bazenski sustavi.  `,
+      summary: `Građevinski radovi na Ugljanu i Pašmanu. Ključ u ruke, rekonstrukcija, tradicionalna gradnja, fasade i izolacije, uređenje interijera, bazenski sustavi.`,
     },
-    description: `Građevinski obrt DOM. Specijalizirana građevinska tvrtka za izgradnju i građevinske radove na otocima Ugljanu i pašmanu. Ključ u ruke, rekonstrukcija, tradicionalna gradnja i kamen, fasade i izolacije, uređenje interijera, bazenski sustavi.`,
-    siteUrl: `https://cms.gradevinskiobrt-dom.hr`,
+    description: `Građevinski radovi na Ugljanu i Pašmanu. Ključ u ruke, rekonstrukcija, tradicionalna gradnja, fasade i izolacije, uređenje interijera, bazenski sustavi.`,
+    siteUrl: `http://www.go-dom.hr`,
     image: "/seoPhoto.png",
+    keywords:
+      "Građevinski radovi, Ugljan,Pašman, Ključ u ruke, rekonstrukcija, tradicionalna gradnja, fasade i izolacije, uređenje interijera, bazenski sustavi",
   },
 
   plugins: [
@@ -19,7 +21,7 @@ module.exports = {
         // Field under which the remote schema will be accessible. You'll use this in your Gatsby query
         fieldName: "wpgraphql",
         // Url to query from
-        url: "https://cms.gradevinskiobrt-dom.hr/graphql",
+        url: "https://cms.go-dom.hr/graphql",
       },
     },
     {
@@ -28,7 +30,6 @@ module.exports = {
         // Add any options here
       },
     },
-
     {
       resolve: "gatsby-plugin-anchor-links",
       options: {
@@ -58,16 +59,16 @@ module.exports = {
         name: `images`,
       },
     },
-    // {
-    //   resolve: `gatsby-plugin-google-fonts`,
-    //   options: {
-    //     fonts: [
-    //       `Montserrat\:300,400,500,700,800`,
-    //       `Montserrat Alternates\:500`, // you can also specify font weights and styles
-    //     ],
-    //     display: "swap",
-    //   },
-    // },
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `Montserrat\:300,400,500,700,800`,
+          `Montserrat Alternates\:500`, // you can also specify font weights and styles
+        ],
+        display: "swap",
+      },
+    },
 
     {
       resolve: `gatsby-transformer-remark`,
@@ -93,12 +94,49 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-sitemap`,
+    {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        host: "https://www.go-dom.hr",
+        sitemap: "https://www.go-dom.hr/sitemap.xml",
+        policy: [{ userAgent: "*", allow: "/" }],
+      },
+    },
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        //trackingId: `ADD YOUR TRACKING ID HERE`,
+        trackingId: `UA-186401316-1`,
       },
     },
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        // You can add multiple tracking ids and a pageview event will be fired for all of them.
+        trackingIds: [
+          "G-XFZYT9DVNK", // Google Analytics / GA
+          "AW-CONVERSION_ID", // Google Ads / Adwords / AW
+          "DC-FLOODIGHT_ID", // Marketing Platform advertising products (Display & Video 360, Search Ads 360, and Campaign Manager)
+        ],
+        // This object gets passed directly to the gtag config command
+        // This config will be shared across all trackingIds
+        gtagConfig: {
+          optimize_id: "OPT_CONTAINER_ID",
+          anonymize_ip: true,
+          cookie_expires: 0,
+        },
+        // This object is used for configuration specific to this plugin
+        pluginConfig: {
+          // Puts tracking script in the head instead of the body
+          head: false,
+          // Setting this parameter is also optional
+          respectDNT: true,
+          // Avoids sending pageview hits from custom paths
+          exclude: ["/preview/**", "/do-not-track/me/too/"],
+        },
+      },
+    },
+
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -115,5 +153,11 @@ module.exports = {
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-plugin-react-helmet-canonical-urls`,
+      options: {
+        siteUrl: `https://www.go-dom.hr`,
+      },
+    },
   ],
 }

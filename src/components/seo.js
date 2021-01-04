@@ -20,6 +20,7 @@ const SEO = ({ description, lang, meta, title }) => {
             description
             siteUrl
             title
+            keywords
           }
         }
       }
@@ -29,6 +30,7 @@ const SEO = ({ description, lang, meta, title }) => {
   const metaDescription = description || site.siteMetadata.description
   const defaultTitle = site.siteMetadata?.title
   const image = site.siteMetadata?.image
+  const keywords = site.siteMetadata?.keywords
 
   return (
     <Helmet
@@ -44,7 +46,7 @@ const SEO = ({ description, lang, meta, title }) => {
         },
         {
           property: `og:title`,
-          content: title,
+          content: defaultTitle,
         },
         {
           property: `og:description`,
@@ -55,12 +57,20 @@ const SEO = ({ description, lang, meta, title }) => {
           content: `website`,
         },
         {
-          name: `twitter:card`,
-          content: `summary`,
+          property: `og:image`,
+          content: "https://www.go-dom.hr/seoPhoto.png",
         },
         {
           name: " twitter: image",
-          content: image,
+          content: "https://www.go-dom.hr/seoPhoto.png",
+        },
+        {
+          name: " twitter: card",
+          content: "summary_large_image",
+        },
+        {
+          name: "keywords",
+          content: keywords,
         },
       ].concat(meta)}
     />

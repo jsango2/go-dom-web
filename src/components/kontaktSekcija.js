@@ -247,7 +247,7 @@ const KontaktSekcija = () => {
             src={Banka}
             alt="logo"
             style={{
-              marginRight: "21px",
+              marginRight: "18px",
               position: "relative",
               top: "17px",
             }}

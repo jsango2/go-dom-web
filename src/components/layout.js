@@ -20,6 +20,7 @@ import Dogovorite from "./dogovorite"
 import Video from "./video"
 import Footer from "./footer"
 import KontaktSekcija from "./kontaktSekcija"
+import BrojcanikMobile from "./brojcanikMobile"
 
 const Layout = ({ isOpen, children }) => {
   // const [offsetY, setOffsetY] = useState(0)
@@ -41,6 +42,7 @@ const Layout = ({ isOpen, children }) => {
       {children}
 
       <Brojcanik />
+      <BrojcanikMobile />
       <Testimonial />
 
       <KontaktSekcija />

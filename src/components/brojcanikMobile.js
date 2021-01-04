@@ -7,44 +7,37 @@ const Wrap = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   width: 100%;
-  height: 344px;
+  height: 436px;
   margin: 0 auto;
-  @media only screen and (max-width: 48em) {
+  @media only screen and (min-width: 48em) {
     display: none;
-    flex-direction: column;
-    margin: 50px auto;
+    ${"" /* margin: 50px auto; */}
   }
 `
 const WrapPar = styled.div`
-  position: relative;
   display: flex;
-  @media only screen and (max-width: 48em) {
-    margin-bottom: 26px;
-  }
-  @media only screen and (max-width: 360px) {
-    margin-bottom: 50px;
-  }
-`
-const NumberLinija = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  padding-top: 20px;
-
-  align-items: center;
-  flex-direction: column;
-  position: relative;
-  width: 221px;
   height: 136px;
-  border-right: 2px solid rgba(0, 0, 0, 0.2);
-  border-left: 2px solid rgba(0, 0, 0, 0.2);
-  @media only screen and (max-width: 48em) {
-    border-right: 0px;
-  }
-  @media only screen and (max-width: 360px) {
-    width: 150px;
-  }
+  margin-bottom: 26px;
 `
+// const NumberLinija = styled.div`
+//   display: flex;
+//   justify-content: flex-start;
+//   padding-top: 20px;
+
+//   align-items: center;
+//   flex-direction: column;
+//   position: relative;
+//   width: 221px;
+//   height: 136px;
+//   border-right: 2px solid rgba(0, 0, 0, 0.2);
+//   border-left: 2px solid rgba(0, 0, 0, 0.2);
+//   @media only screen and (max-width: 48em) {
+//   }
+//   @media only screen and (max-width: 360px) {
+//   }
+// `
 
 const Number = styled.div`
   display: flex;
@@ -55,12 +48,12 @@ const Number = styled.div`
   position: relative;
   width: 221px;
   height: 136px;
-  @media only screen and (max-width: 360px) {
+  @media only screen and (max-width: 420px) {
     width: 150px;
   }
 `
 
-const Brojcanik = () => {
+const BrojcanikMobile = () => {
   return (
     <Wrap>
       <WrapPar>
@@ -72,7 +65,7 @@ const Brojcanik = () => {
               color: "#D85F39",
               fontWeight: "700",
               fontSize: "38px",
-              marginBottom: "39px",
+              marginBottom: "10px",
             }}
           >
             <Counter target={1999} duration={3} />
@@ -88,14 +81,21 @@ const Brojcanik = () => {
             GODINA OSNUTKA
           </div>
         </Number>
-        <NumberLinija>
+        <div
+          style={{
+            width: "2px",
+            height: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.2)",
+          }}
+        ></div>
+        <Number>
           {" "}
           <div
             style={{
               color: "#D85F39",
               fontWeight: "700",
               fontSize: "38px",
-              marginBottom: "39px",
+              marginBottom: "10px",
             }}
           >
             <Counter target={18} duration={2.5} />
@@ -109,17 +109,18 @@ const Brojcanik = () => {
           >
             ZAPOSLENIH
           </div>
-        </NumberLinija>
+        </Number>
       </WrapPar>
-      <WrapPar style={{ marginLeft: "3px" }}>
-        <Number style={{ borderRight: "2px solid rgba(0, 0, 0, 0.2)" }}>
+      <WrapPar>
+        {" "}
+        <Number>
           {" "}
           <div
             style={{
               color: "#D85F39",
               fontWeight: "700",
               fontSize: "38px",
-              marginBottom: "39px",
+              marginBottom: "10px",
             }}
           >
             <Counter target={20} duration={2.7} />
@@ -135,6 +136,13 @@ const Brojcanik = () => {
             PROJEKATA GODIŠNJE
           </div>
         </Number>
+        <div
+          style={{
+            width: "2px",
+            height: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.2)",
+          }}
+        ></div>
         <Number>
           {" "}
           <div
@@ -142,7 +150,7 @@ const Brojcanik = () => {
               color: "#D85F39",
               fontWeight: "700",
               fontSize: "38px",
-              marginBottom: "39px",
+              marginBottom: "10px",
             }}
           >
             <Counter target={445} duration={3.1} />
@@ -161,4 +169,4 @@ const Brojcanik = () => {
     </Wrap>
   )
 }
-export default Brojcanik
+export default BrojcanikMobile

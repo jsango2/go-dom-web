@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useRef } from "react"
+import Radnici from "../images/radniciSQ.jpg"
 import { graphql } from "gatsby"
 import styled from "styled-components"
 import { Link } from "gatsby"
-import { CgCloseR } from "react-icons/cg"
+import { AiOutlineClose } from "react-icons/Ai"
 import Layout from "../components/layout"
-import { IoIosArrowDropright } from "react-icons/io"
+import { IoIosArrowDropdown, IoIosArrowDropright } from "react-icons/io"
 import Loader from "react-loader-spinner"
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import Logo from "../images/LogoVelikiBijeli.svg"
 
 // import ProjektiHome from "../components/projekti"
 // import Projekti from "./projekti"
@@ -37,31 +39,31 @@ const Podnaslov = styled.div`
 const MobilneKategorijeWrapPop = styled.div`
   position: fixed;
   left: 0;
-  top: 10%;
+  top: 0;
 
-  z-index: 1000;
+  z-index: 99999;
   display: none;
-  border-radius: 5px;
-  width: 90%;
-  height: 600px;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
   background-color: white;
+  opacity: 1;
   text-align: center;
   margin: 0 auto;
   line-height: 28.5px;
   color: #393939;
-  box-shadow: 0px 0px 15px -7px rgba(0, 0, 0, 0.19);
+  ${"" /* box-shadow: 0px 0px 15px -7px rgba(0, 0, 0, 0.19); */}
   @media only screen and (max-width: 42em) {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: flex-start;
-    padding-top: 100px;
-    padding-bottom: 60px;
-    top: 100px;
-    border: 1px solid #000;
-    outline: 2px dashed #fff;
-    outline-offset: -15px;
+    padding: 100px 0 60px 20px;
+    color: #393939;
+
+    ${"" /* border: 1px solid #000;
+    outline: 2px dashed #fff; */}
+    ${"" /* outline-offset: -15px; */}
   }
 `
 // const Logo = styled.div`
@@ -88,6 +90,7 @@ const Linkovi = styled.div`
   }
 `
 const Icon = styled(IoIosArrowDropright)`
+  position: relative;
   transition: all 0.3s linear;
 `
 
@@ -116,6 +119,36 @@ const Links = styled.div`
   }
   @media only screen and (max-width: 48em) {
     margin: 15px 19px;
+  }
+`
+const LinksMob = styled.div`
+  display: flex;
+
+  cursor: pointer;
+  position: relative;
+  margin: 5px 19px 25px 19px;
+  color: #71a8bf !important;
+  font-weight: 300;
+  font-size: 18px;
+  -webkit-transition: color 1s;
+  -moz-transition: color 1s;
+  -ms-transition: color 1s;
+  -o-transition: color 1s;
+  transition: color 1s;
+  z-index: 99999;
+
+  &:hover {
+    color: #71a8bf;
+    font-weight: 800;
+    font-size: 17.3px;
+  }
+  &:visited {
+    color: #71a8bf;
+    font-weight: 800;
+    font-size: 17.3px;
+  }
+  @media only screen and (max-width: 48em) {
+    margin: 20px 19px;
   }
 `
 
@@ -219,6 +252,11 @@ const WrapProjekti = styled.div`
   min-height: 480px;
   font-size: 0;
   margin: 0 auto;
+  @media only screen and (max-width: 410) {
+    flex-direction: row;
+    width: 100%;
+    height: 235px;
+  }
 `
 const Button = styled.div`
   cursor: pointer;
@@ -241,6 +279,25 @@ const Button = styled.div`
   @media only screen and (max-width: 48em) {
     margin: 40px auto 40px auto;
     display: flex;
+  }
+`
+const MobPopHeader = styled.div`
+position: absolute;
+padding-top: 15px;
+padding-left:49px;
+top:0;
+left:0;
+z:99999;
+height:67px;
+width: 100%;
+background-color: #71A8BF;
+  }
+`
+
+const LogoMob = styled.div`
+  width: 78px;
+  @media only screen and (max-width: 440px) {
+    width: 78px;
   }
 `
 
@@ -314,71 +371,162 @@ const IndexPage = ({ data }) => {
           projekata
         </Podnaslov>
         <Button onClick={() => setisOpen(true)}>ODABERI KATEGORIJU</Button>
-
         <MobilneKategorijeWrapPop
           className={`sidebar ${isOpen ? "show-sidebar" : ""} `}
         >
-          <CgCloseR
-            onClick={() => setisOpen(false)}
+          <div
             style={{
-              cursor: "pointer",
+              zIndex: "0 !important",
               position: "absolute",
-              top: "15px",
-              right: "15px",
-              opacity: "0.7",
+              top: "0",
+              left: "0",
+              width: "100%",
+              height: "100%",
+              backgroundImage: `url(${Radnici})`,
+              backgroundPosition: "center",
+              backgroundSize: "cover ",
+              opacity: "0.07",
             }}
-          />
-          <Links
+          ></div>
+          <MobPopHeader>
+            <LogoMob>
+              <img src={Logo} alt="LogoDom" width="100%" />
+            </LogoMob>
+            <AiOutlineClose
+              onClick={() => setisOpen(false)}
+              style={{
+                cursor: "pointer",
+                position: "absolute",
+                fontSize: "24px",
+                color: "white",
+                top: "21px",
+                right: "18px",
+                opacity: "0.7",
+                zIndex: "99999",
+              }}
+            />
+          </MobPopHeader>
+
+          <LinksMob
             className={`sidebarLink ${isOpen ? "show-Link" : ""} `}
             onClick={e => handleClick(e, 0)}
           >
+            <Icon
+              style={{
+                color: "#D85F39",
+                fontSize: "24px",
+                top: "1.3px",
+                marginRight: "15px",
+              }}
+            />
             SVI
-          </Links>
+          </LinksMob>
 
-          <Links
-            style={{ textAlign: "center" }}
+          <LinksMob
+            style={{ textAlign: "left" }}
             className={`sidebarLink ${isOpen ? "show-Link" : ""} `}
             onClick={e => handleClick(e, 1)}
           >
+            {" "}
+            <Icon
+              style={{
+                color: "#D85F39",
+                fontSize: "24px",
+                top: "1.3px",
+                marginRight: "15px",
+                flexShrink: "0",
+              }}
+            />
             KLJUČ U RUKE
-          </Links>
+          </LinksMob>
 
-          <Links
-            style={{ textAlign: "center" }}
+          <LinksMob
+            style={{ textAlign: "left" }}
             className={`sidebarLink ${isOpen ? "show-Link" : ""} `}
             onClick={e => handleClick(e, 2)}
           >
+            {" "}
+            <Icon
+              style={{
+                color: "#D85F39",
+                fontSize: "24px",
+                top: "1.3px",
+                marginRight: "15px",
+                flexShrink: "0",
+              }}
+            />
             REKONSTRUKCIJA
-          </Links>
-          <Links
-            style={{ textAlign: "center" }}
+          </LinksMob>
+          <LinksMob
+            style={{ textAlign: "left" }}
             className={`sidebarLink ${isOpen ? "show-Link" : ""} `}
             onClick={e => handleClick(e, 3)}
           >
+            {" "}
+            <Icon
+              style={{
+                color: "#D85F39",
+                fontSize: "24px",
+                top: "1.3px",
+                marginRight: "15px",
+                flexShrink: "0",
+              }}
+            />
             TRADICIONALNA GRADNJA I KAMEN
-          </Links>
-          <Links
-            style={{ textAlign: "center" }}
+          </LinksMob>
+          <LinksMob
+            style={{ textAlign: "left" }}
             className={`sidebarLink ${isOpen ? "show-Link" : ""} `}
             onClick={e => handleClick(e, 4)}
           >
+            {" "}
+            <Icon
+              style={{
+                color: "#D85F39",
+                fontSize: "24px",
+                top: "1.3px",
+                marginRight: "15px",
+                flexShrink: "0",
+              }}
+            />
             FASADE I IZOLACIJE
-          </Links>
-          <Links
-            style={{ textAlign: "center" }}
+          </LinksMob>
+          <LinksMob
+            style={{ textAlign: "left" }}
             className={`sidebarLink ${isOpen ? "show-Link" : ""} `}
             onClick={e => handleClick(e, 5)}
           >
+            {" "}
+            <Icon
+              style={{
+                color: "#D85F39",
+                fontSize: "24px",
+                top: "1.3px",
+                marginRight: "15px",
+                flexShrink: "0",
+              }}
+            />
             UREĐENJE INTERIJERA
-          </Links>
-          <Links
-            style={{ textAlign: "center" }}
+          </LinksMob>
+          <LinksMob
+            style={{ textAlign: "left" }}
             className={`sidebarLink ${isOpen ? "show-Link" : ""} `}
             onClick={e => handleClick(e, 6)}
           >
+            {" "}
+            <Icon
+              style={{
+                color: "#D85F39",
+                fontSize: "24px",
+                top: "1.3px",
+                marginRight: "15px",
+                flexShrink: "0",
+              }}
+            />
             BAZENSKI SUSTAVI
-          </Links>
+          </LinksMob>
         </MobilneKategorijeWrapPop>
+
         <Linkovi>
           <Links
             className={current === 0 ? "blueLink" : ""}

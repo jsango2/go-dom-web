@@ -135,14 +135,7 @@ const Objekt = ({ data }) => {
           />
         </div>
         <PostJenDvaTri data={data.wpgraphql.post.dodatniOpis} />
-        <PhotoGrid
-          foto={data.wpgraphql.post.dodatniOpis}
-          // foto2={data.wpgraphql.post.dodatniOpis.foto2.sourceUrl}
-          // foto3={data.wpgraphql.post.dodatniOpis.foto3.sourceUrl}
-          // foto4={data.wpgraphql.post.dodatniOpis.foto4.sourceUrl}
-          // foto5={data.wpgraphql.post.dodatniOpis.foto5.sourceUrl}
-          // foto6={data.wpgraphql.post.dodatniOpis.foto6.sourceUrl}
-        />
+        <PhotoGrid foto={data.wpgraphql.post.dodatniOpis} />
         <div
           style={{
             fontWeight: "300",
@@ -302,7 +295,7 @@ export const query = graphql`
           kratkiOpisUPostu3
           lokacijaObjekta
           frontForografija {
-            sourceUrl(size: TWENTYTWENTY_FULLSCREEN)
+            sourceUrl(size: LARGE)
           }
           naslovMiniPost1
           naslovMiniPost2
