@@ -9,7 +9,7 @@ module.exports = {
     siteUrl: `http://www.go-dom.hr`,
     image: "/seoPhoto.png",
     keywords:
-      "Građevinski radovi, Ugljan,Pašman, Ključ u ruke, rekonstrukcija, tradicionalna gradnja, fasade i izolacije, uređenje interijera, bazenski sustavi",
+      "Građevinski radovi, Ugljan, Pašman, Ključ u ruke, rekonstrukcija, tradicionalna gradnja, fasade i izolacije, uređenje interijera, bazenski sustavi, Građevina na otocima, Izgradnja kuća, Otočki proizvod, Izgradnja, bazen",
   },
 
   plugins: [
@@ -146,7 +146,7 @@ module.exports = {
         background_color: `#ffffff`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `content/assets/gatsby-icon.png`,
+        icon: `content/assets/domicon.png`,
       },
     },
     `gatsby-plugin-react-helmet`,

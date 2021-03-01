@@ -1,6 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import Background from "../images/radniciBG.jpg"
+import Background from "../images/pozadinska1smanjena.jpg"
 import Jedan from "../images/1.svg"
 import Dva from "../images/2.svg"
 import Tri from "../images/3.svg"

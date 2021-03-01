@@ -339,7 +339,7 @@ const IndexPage = ({ data }) => {
 
   return (
     <Layout isOpen={isOpen}>
-      <SEO title="Home" />
+      <SEO title="Početna" />
 
       {/* <ProjektiHome></ProjektiHome> */}
       <Wrap>
@@ -604,13 +604,22 @@ const IndexPage = ({ data }) => {
                           opacity: "0.5",
                         }}
                       >
-                        {post.node.categories.edges[0].node.name ===
+                        {/* {post.node.categories.edges[0].node.name ===
                         "FEATURED" ? (
                           <div>{post.node.categories.edges[1].node.name}</div>
                         ) : (
-                          post.node.categories.edges[0].node.name
+                          <div>{post.node.categories.edges[0].node.name} </div>
+                        )} */}
+                        {kategorija === "SVI" ? (
+                          <div>
+                            {post.node.categories.edges[1].node.name ===
+                            "FEATURED"
+                              ? post.node.categories.edges[0].node.name
+                              : post.node.categories.edges[1].node.name}
+                          </div>
+                        ) : (
+                          <div>{kategorija}</div>
                         )}
-                        {/* {post.node.categories.edges[0].node.name} */}
                       </div>
                       <div
                         style={{
@@ -707,7 +716,7 @@ export const query = graphql`
             dodatniOpis {
               kratkiOpisFront
               frontForografija {
-                sourceUrl(size: MEDIUM_LARGE)
+                sourceUrl(size: LARGE)
               }
             }
             categories {

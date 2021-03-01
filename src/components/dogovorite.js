@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import styled from "styled-components"
 import Logo from "../images/LOGO VELIKI.svg"
-import Boss from "../images/blue2.jpg"
+import BG from "../images/radniciBG.jpg"
 
 const Wrap = styled.div`
   position: relative;
@@ -87,7 +87,7 @@ const Dogovorite = () => {
             width: "120%",
             height: "120%",
             top: "-400px",
-            backgroundImage: `url(${Boss})`,
+            backgroundImage: `url(${BG})`,
             backgroundPosition: "center",
             backgroundSize: "cover ",
             zIndex: "1",

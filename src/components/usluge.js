@@ -1,11 +1,11 @@
 import React from "react"
 import styled from "styled-components"
-import pic1 from "../images/meni1.png"
-import pic2 from "../images/blue2.jpg"
+import pic1 from "../images/meni1.jpg"
+import pic2 from "../images/obnovakamen.jpg"
 import pic3 from "../images/meni4.png"
 import pic4 from "../images/meni5.png"
-import pic5 from "../images/meni6.png"
-import pic6 from "../images/meni7.png"
+import pic5 from "../images/meni22.jpg"
+import pic6 from "../images/meni8.png"
 import FadeInSection from "./fadeIn"
 import UslugeMobilno from "./uslugeMobilno"
 
@@ -29,7 +29,7 @@ const Grid = styled.div`
   }
 `
 const GridDiv = styled.div`
-cursor:pointer;
+${"" /* cursor:pointer; */}
   position: relative;
   display: flex;
   align-items: center;
@@ -38,6 +38,7 @@ cursor:pointer;
   height: 180px;
   margin: 8px;
   padding: 30px;
+  overflow: hidden;
   
     &:hover .text {
       display: none;
@@ -205,10 +206,10 @@ const Usluge = () => {
             <img
               src={pic6}
               alt="pic6"
-              width="100%"
+              height="100%"
               style={{
                 position: "absolute",
-                objectFit: "contain",
+                objectFit: "cover",
                 zIndex: "1",
               }}
             />

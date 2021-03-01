@@ -10,6 +10,7 @@ import { Link } from "gatsby"
 import { IoIosArrowDropright } from "react-icons/io"
 import { useHasBeenVisible } from "./../components/useVisibility"
 import Loader from "react-loader-spinner"
+import SEO from "../components/seo"
 
 const Wrap = styled.div`
   position: relative;
@@ -123,6 +124,10 @@ const Objekt = ({ data }) => {
   return (
     <>
       <Wrap>
+        <SEO
+          title={data.wpgraphql.post.title}
+          description={data.wpgraphql.post.dodatniOpis.kratkiOpisFront}
+        />
         <Header />
         <div style={{ position: "relative" }}>
           <HeroPage
@@ -311,7 +316,7 @@ export const query = graphql`
             dodatniOpis {
               kratkiOpisFront
               frontForografija {
-                sourceUrl(size: MEDIUM)
+                sourceUrl(size: MEDIUM_LARGE)
               }
             }
             categories {

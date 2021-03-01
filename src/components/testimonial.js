@@ -151,7 +151,7 @@ const Testimonial = () => {
               showThumbs={false}
               showStatus={false}
               autoPlay={true}
-              interval={3100}
+              interval={8100}
               showIndicators={false}
             >
               {data.wpgraphql.izjave_vise.edges.map(testimonial => (

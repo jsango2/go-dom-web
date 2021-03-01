@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react"
 import styled from "styled-components"
 import Quote from "../images/quote.svg"
-import Guy from "../images/guy.jpg"
-import Radnici from "../images/radniciSQ.jpg"
+import Guy from "../images/luka.jpg"
+import Radnici from "../images/pozadinska2.jpg"
 
 const Wrap = styled.div`
   display: flex;

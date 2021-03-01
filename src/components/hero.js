@@ -1,12 +1,19 @@
 import React from "react"
 import styled from "styled-components"
 import { Carousel } from "react-responsive-carousel"
-import Vert1 from "../images/vert1.png"
-import Vert2 from "../images/vert2.png"
-// import Vert3 from "../images/vert3.png"
-import Vert4 from "../images/slika1.jpg"
-import Vert7 from "../images/slika3.jpg"
-import Vert5 from "../images/vert5.png"
+import Vert1 from "../images/vertx1.jpg"
+import Vert2 from "../images/vertx2.jpg"
+// import Vert3 from "../images/vert3.jpg"
+import Vert4 from "../images/vertx4.jpg"
+import Vert7 from "../images/vertx7.jpg"
+import Vert5 from "../images/vertx5.jpg"
+import Vert3 from "../images/vertx3.jpg"
+import Vert6 from "../images/vertx6.jpg"
+import Vert8 from "../images/vertx8.jpg"
+import Vert9 from "../images/vertx9.jpg"
+import Vert10 from "../images/vertx10.jpg"
+import Vert11 from "../images/vertx11.jpg"
+import Vert12 from "../images/vertx12.jpg"
 import "react-responsive-carousel/lib/styles/carousel.css"
 
 const HeroDiv = styled.div`
@@ -222,7 +229,16 @@ const Hero = () => (
         </Post>
         <Post>
           <img
-            src={Vert5}
+            src={Vert3}
+            alt="vert1"
+            style={{
+              height: "635px",
+            }}
+          />
+        </Post>
+        <Post>
+          <img
+            src={Vert4}
             alt="vert1"
             style={{
               height: "635px",
@@ -253,7 +269,7 @@ const Hero = () => (
         </Post>
         <Post>
           <img
-            src={Vert4}
+            src={Vert6}
             alt="vert1"
             style={{
               height: "635px",
@@ -262,7 +278,16 @@ const Hero = () => (
         </Post>
         <Post>
           <img
-            src={Vert1}
+            src={Vert7}
+            alt="vert1"
+            style={{
+              height: "635px",
+            }}
+          />
+        </Post>
+        <Post>
+          <img
+            src={Vert8}
             alt="vert1"
             style={{
               height: "635px",
@@ -284,7 +309,7 @@ const Hero = () => (
       >
         <Post>
           <img
-            src={Vert1}
+            src={Vert9}
             alt="vert1"
             style={{
               height: "635px",
@@ -293,7 +318,7 @@ const Hero = () => (
         </Post>
         <Post>
           <img
-            src={Vert5}
+            src={Vert10}
             alt="vert1"
             style={{
               height: "635px",
@@ -302,7 +327,16 @@ const Hero = () => (
         </Post>
         <Post>
           <img
-            src={Vert7}
+            src={Vert11}
+            alt="vert1"
+            style={{
+              height: "635px",
+            }}
+          />
+        </Post>
+        <Post>
+          <img
+            src={Vert12}
             alt="vert1"
             style={{
               height: "635px",
