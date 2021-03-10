@@ -34,7 +34,7 @@ const BGvideo = styled.div`
   @media only screen and (max-width: 530px) {
     height: 130%;
   }
-  @media only screen and (max-width: 410px) {
+  @media only screen and (max-width: 390px) {
     height: 160%;
     ${"" /* top: -570px; */}
   }
