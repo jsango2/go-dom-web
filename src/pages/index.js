@@ -282,16 +282,15 @@ const Button = styled.div`
   }
 `
 const MobPopHeader = styled.div`
-position: absolute;
-padding-top: 15px;
-padding-left:49px;
-top:0;
-left:0;
-z:99999;
-height:67px;
-width: 100%;
-background-color: #71A8BF;
-  }
+  position: absolute;
+  padding-top: 15px;
+  padding-left: 49px;
+  top: 0;
+  left: 0;
+  z-index: 99999;
+  height: 67px;
+  width: 100%;
+  background-color: #71a8bf;
 `
 
 const LogoMob = styled.div`
